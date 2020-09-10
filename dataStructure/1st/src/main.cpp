@@ -1,3 +1,10 @@
+/*********************************************
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-09-10 14:45:06
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-09-10 14:48:31
+ * @Description  :
+*********************************************/
 #include <iostream>
 #include "./../inc/Complex.hpp"
 
@@ -25,8 +32,8 @@ int main() {
 	cout << "Over." << endl;
 
 	cout << endl;
-	
-	cout << "Reload & cy-initial function test:" << endl;
+
+	cout << "Overload & cy-initial function test:" << endl;
 	cout << "c = a + b" << endl << "c : " << endl;
 	Complex c = a + b;
 	c.show();
