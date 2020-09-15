@@ -1,3 +1,10 @@
+/*********************************************
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-09-10 14:45:06
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-09-10 14:48:20
+ * @Description  :
+*********************************************/
 #include <iostream>
 #include "./../inc/Complex.hpp"
 
@@ -26,7 +33,7 @@ void Complex::show() {
 	std::cout << "image : " << m_image << std::endl;
 }
 
-// reload
+// Overload
 Complex Complex::operator + (const Complex& obj) {
 	Complex ans(m_real + obj.getReal(), m_image + obj.getImage());
 	return ans;
