@@ -1,3 +1,10 @@
+/*********************************************
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-09-15 13:14:03
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-09-15 13:22:14
+ * @Description  :
+*********************************************/
 #include <iostream>
 #include "./../inc/LinearList.hpp"
 
@@ -44,7 +51,7 @@ int main() {
 	cout << "num = " << num << endl;
 
 	cout << "Over" << endl;
-	
+
 
 	return 0;
 }

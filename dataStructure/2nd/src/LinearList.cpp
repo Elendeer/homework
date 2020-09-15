@@ -1,3 +1,10 @@
+/*********************************************
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-09-15 13:14:03
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-09-15 13:21:41
+ * @Description  :
+*********************************************/
 #include <iostream>
 #include "./../inc/LinearList.hpp"
 
