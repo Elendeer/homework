@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-09-10 14:45:06
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-09-10 14:48:31
+ * @LastEditTime : 2020-09-20 23:02:19
  * @Description  :
 *********************************************/
 #include <iostream>
@@ -58,6 +58,7 @@ int main() {
 	cin >> a;
 	cout << "a :" << endl << a << endl;
 
+	cout << a + b;
 
 
 	return 0;
