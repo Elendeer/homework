@@ -12,6 +12,10 @@ Only need a lol just fine.
 
 Or you may want to `make` some of them.
 
+### Something not so suck that you may interested in
+
+**LinkedList** class in *./dataStructure/3rd*
+
 ## License
 
 MIT.
