@@ -6,7 +6,7 @@ main: main.o LinearList.o
 main.o: ./src/main.cpp
 	g++ -c ./src/main.cpp
 
-LinearList.o: ./src/LinearList.cpp
+LinearList.o: ./src/LinearList.cpp ./inc/LinearList.hpp
 	g++ -c ./src/LinearList.cpp
 
 clean:

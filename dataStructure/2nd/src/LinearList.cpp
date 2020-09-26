@@ -67,6 +67,13 @@ bool LinearList::set(int num, int idx) {
 	return true;
 }
 
+int LinearList::search(int num) const {
+	for (int i = 1; i < m_size; ++ i) {
+		if (m_array[i] == num) return i;
+	}
+	return -1;
+}
+
 int LinearList::getNum(int idx) const {
 	if (idx >= m_size || idx < 1) {
 		std::cout << "invalid idx" << std::endl;
@@ -82,4 +89,38 @@ void LinearList::print() const{
 	}
 	std::cout << m_array[m_size - 1];
 	std::cout << "]" << std::endl;
+}
+
+LinearList LinearList::merge(LinearList& La, LinearList& Lb) {
+	LinearList Lc;
+	if (La.size() + Lb.size() - 2 > 100) {
+		std::cout << "List will out of range after merge!" << std::endl;
+		return Lc;
+	}
+
+	int i = 1, j = 1;
+
+	while (i < La.size() && j < Lb.size()) {
+		if (La.getNum(i) > Lb.getNum(j)) {
+			Lc.insert(La.getNum(i), Lc.size());
+			i ++;
+		}
+		else {
+			Lc.insert(Lb.getNum(j), Lc.size());
+			j ++;
+		}
+	}
+
+	while (i < La.size()) {
+		Lc.insert(La.getNum(i), Lc.size());
+		i ++;
+	}
+	while (j < Lb.size()) {
+		Lc.insert(Lb.getNum(j), Lc.size());
+		j ++;
+	}
+
+
+
+	return Lc;
 }

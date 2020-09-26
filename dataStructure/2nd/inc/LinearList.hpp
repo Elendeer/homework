@@ -25,11 +25,22 @@ public:
 	bool insert(int num);
 	bool del(int idx);
 	bool set(int num, int idx);
+	
+	// Return the index of num if the number is in the list.
+	// Return -1 if it's not. Return the first one when have
+	// multiple available values.
+	int search(int num) const;
+
+	// Get num from the index.
 	int getNum(int idx) const;
 
 	// print the list
 	void print() const;
 
+	// Merge list B and list A. Both A and B should be in descending order.
+	// The return list will be in descending order too after merge.
+	// Return an empty list if the input is invalid.
+	static LinearList merge(LinearList& La, LinearList& Lb);
 
 };
 

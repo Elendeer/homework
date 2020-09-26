@@ -21,6 +21,7 @@ int main() {
 	a.print();
 	cout << "Size: " << a.size() << endl;
 	cout << "Over" << endl;
+	cout << endl;
 
 
 	cout << "Del function test:" << endl;
@@ -37,12 +38,13 @@ int main() {
 	a.print();
 	cout << "Size: " << a.size() << endl;
 	cout << "Over" << endl;
+	cout << endl;
 
 
 	int num = -1;
 	cout << "Let num = -1" << endl;
 
-	cout << "Get function test:" << endl;
+	cout << "Get function test: to get a num from the list:" << endl;
 	cout << "Get a[3]:" << endl;
 	num = a.getNum(3);
 	cout << "num = " << num << endl;
@@ -51,6 +53,39 @@ int main() {
 	cout << "num = " << num << endl;
 
 	cout << "Over" << endl;
+	cout << endl;
+
+	cout << "Search function test:" << endl;
+	cout << "Enter a num: ";
+	cin >> num;
+	cout << "Search for " << num << " in a:" << endl;
+	if (a.search(num)) {
+		cout << "Found number 1 in index " << a.search(num) << endl;
+	}
+	else {
+		cout << "No found" << endl;
+	}
+	cout << "Over" << endl;
+	cout << endl;
+
+	cout << "Merge function test:" << endl;
+	cout << "List A:" << endl;
+	a.print();
+	cout << "Set list B:" << endl;
+	LinearList b;
+	b.insert(789);
+	b.insert(456);
+	b.insert(23);
+	b.insert(1);
+	b.print();
+
+	LinearList c = LinearList::merge(a, b);
+	cout << "Merge a and b :" << endl;
+	c.print();
+	cout << "Over." << endl;
+
+	
+	
 
 
 	return 0;
