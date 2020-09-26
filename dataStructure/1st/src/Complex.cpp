@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-09-10 14:45:06
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-09-10 14:48:20
+ * @LastEditTime : 2020-09-20 22:57:35
  * @Description  :
 *********************************************/
 #include <iostream>
@@ -59,7 +59,7 @@ Complex Complex::operator / (const Complex& obj) {
 std::istream& operator >> (std::istream& input, Complex& obj) {
 	return input >> obj.m_real >> obj.m_image;
 }
-std::ostream& operator << (std::ostream& output, Complex& obj) {
+std::ostream& operator << (std::ostream& output, const Complex& obj) {
 	return output << "real : " << obj.m_real << std::endl
 		<< "image : " << obj.m_image << std::endl;
 }

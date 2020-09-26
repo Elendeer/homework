@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-09-10 14:45:06
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-09-10 14:48:49
+ * @LastEditTime : 2020-09-20 22:59:51
  * @Description  :
 *********************************************/
 #ifndef _COMPLEX_HPP_
@@ -34,10 +34,10 @@ public:
 	Complex operator / (const Complex& obj);
 
 	friend std::istream& operator >> (std::istream& input, Complex& obj);
-	friend std::ostream& operator << (std::ostream& output, Complex& obj);
+	friend std::ostream& operator << (std::ostream& output, const Complex& obj);
 };
 
 std::istream& operator >> (std::istream& input, Complex& obj);
-std::ostream& operator << (std::ostream& output, Complex& obj);
+std::ostream& operator << (std::ostream& output, const Complex& obj);
 
 #endif
