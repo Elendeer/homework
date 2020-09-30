@@ -1,6 +1,15 @@
 #ifndef _LINKED_LIST_HPP_
 #define _LINKED_LIST_HPP_
 
+#include <iostream>
+
+/***** Classes Declarations *****/
+
+class Node;
+class LinkedList;
+
+/***** Classes Definitions *****/
+
 class Node {
 private:
 	int m_data;
@@ -12,6 +21,9 @@ public:
 	Node();
 	Node(int data);
 	~Node();
+
+	Node * getNext() const;
+	int getData() const;
 };
 
 class LinkedList {
@@ -24,6 +36,8 @@ private:
 
 public:
 	LinkedList();
+	LinkedList(std::initializer_list<int> list);
+	LinkedList(LinkedList & obj);
 	~LinkedList();
 
 	int size() const;
@@ -36,6 +50,16 @@ public:
 	
 	void print() const;
 
+	bool merge(LinkedList & list);
+
+	friend std::ostream & operator << (std::ostream & out, LinkedList& list);
+
 };
+
+
+/***** Operator overloading. *****/
+
+std::ostream & operator << (std::ostream & out, LinkedList & list);
+// std::ostream & operator >> (std::ostream & out, LinkedList& list);
 
 #endif

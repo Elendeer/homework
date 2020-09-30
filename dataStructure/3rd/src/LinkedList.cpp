@@ -15,6 +15,13 @@ Node::~Node() {
 	// std::cout << "NodeDistructed!" << std::endl;
 }
 
+Node * Node::getNext() const {
+	return m_next;
+}
+int Node::getData() const {
+	return m_data;
+}
+
 
 /***** Member functions of LinkedList class. *****/
 
@@ -23,6 +30,27 @@ LinkedList::LinkedList() {
 	m_tail = m_head;
 	m_size = 0;
 	// std::cout << "ListCreated!" << std::endl;
+}
+LinkedList::LinkedList(std::initializer_list<int> list) {
+	m_head = new Node;
+	m_tail = m_head;
+	m_size = 0;
+
+	for (auto item : list) {
+		this -> insert(item);
+	}
+}
+
+// Copy constructor
+LinkedList::LinkedList(LinkedList & obj) {
+	m_head = new Node;
+	m_tail = m_head;
+	m_size = 0;
+
+	Node * p = obj.m_head -> m_next;
+	for (; p != nullptr; p = p -> m_next) {
+		insert(p->m_data);
+	}
 }
 
 LinkedList::~LinkedList() {
@@ -164,3 +192,50 @@ void LinkedList::print() const {
 
 	std::cout << "]" << std::endl;
 }
+
+bool LinkedList::merge(LinkedList & list) {
+	Node * p = m_head -> m_next;
+	Node * pl = list.m_head -> m_next;
+
+	for (int idx = 0; p != nullptr && pl != nullptr; p = p -> m_next, ++ idx) {
+		if (p -> m_data > pl -> m_data) {
+			continue;
+		}
+		else {
+			this -> insert(idx, pl -> m_data);
+			pl = pl -> m_next;
+		}
+	}
+	while (pl != nullptr) {
+		this -> insert(pl -> m_data);
+		pl = pl -> m_next;
+	}
+
+
+	return true;
+}
+
+
+/***** Operator overloading. *****/
+
+std::ostream & operator << (std::ostream & out, LinkedList & list) {
+	// Basicly use the same operation with print function of LinkedList.
+
+	Node * p = list.m_head -> getNext();
+
+	out << "[";
+
+	while (p != nullptr && p -> getNext() != nullptr) {
+		out << p -> getData() << ", ";
+		p = p -> getNext();
+	}
+
+	if (p != nullptr) {
+		out << p -> getData();
+	}
+
+	out << "]";
+
+	return out;
+}
+

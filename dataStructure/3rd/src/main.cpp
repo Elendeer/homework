@@ -59,6 +59,13 @@ int main() {
 	cout << "Over." << endl;
 	cout << endl;
 
+	cout << "Init objects with initializer list & output operator overload test:" << endl;
+	LinkedList B = {3, 2, 1}, C = {11, 3, 0, -3};
+	cout << B  << "; " << C << "; " << endl;
+
+	cout << "Merge function test:" << endl;
+	B.merge(C);
+	cout << B << endl;
 
 
 	return 0;
