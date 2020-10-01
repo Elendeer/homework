@@ -12,4 +12,4 @@ LinkedList.o: ./src/LinkedList.cpp ./inc/LinkedList.hpp
 	g++ -c $<
 
 clean: 
-	rm main.o LinkedList.o
+	rm $(OBJ)

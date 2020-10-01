@@ -14,7 +14,8 @@ Or you may want to `make` some of them.
 
 ### Something not so suck that you may interested in
 
-**LinkedList** class in *./dataStructure/3rd*
+**Single LinkedList class** in *./dataStructure/3rd*
+**Single LinkedList template** in *./dataStructure/template*
 
 ## License
 

@@ -1,4 +1,4 @@
-#include "./../inc/LinkedList.hpp"
+#include "./LinkedList.hpp"
 #include <iostream>
 
 int main() {
@@ -7,65 +7,66 @@ int main() {
 	cout << "Note: The index of linked list start from 0." << endl;
 	cout << endl;
 	cout << "Create an empty list A:" << endl;
-	LinkedList a;
-	a.print();
-	cout << "The size of list A: " << a.size() << endl;
+	SingleLinkedList<int> A;
+	A.print();
+	cout << "The size of list A: " << A.size() << endl;
 
 	cout << "Over." << endl;
 	cout << endl;
 
 	cout << "Insert function test:" << endl;
 	cout << "Insert nums one by one as per subscript increment:" << endl;
-	a.insert(1);
-	a.insert(2);
-	a.insert(5);
-	a.insert(10);
-	a.insert(19);
+	A.insert(1);
+	A.insert(2);
+	A.insert(5);
+	A.insert(10);
+	A.insert(19);
 
-	a.print();
-	cout << "The size of list A: " << a.size() << endl;
+	A.print();
+	cout << "The size of list A: " << A.size() << endl;
 
 	cout << "Insert 40 to A[3]:" << endl;
-	a.insert(3, 40);
+	A.insert(3, 40);
 
-	a.print();
-	cout << "The size of list A: " << a.size() << endl;
+	A.print();
+	cout << "The size of list A: " << A.size() << endl;
 	cout << "Over." << endl;
 	cout << endl;
 
 	cout << "Delete function test:" << endl;
 	cout << "Delete A[1]:" << endl;
-	a.del(1);
+	A.del(1);
 
-	a.print();
-	cout << "The size of list A: " << a.size() << endl;
+	A.print();
+	cout << "The size of list A: " << A.size() << endl;
 	cout << "Over." << endl;
 	cout << endl;
 
 	cout << "Set function test:" << endl;
 	cout << "Set A[3] = 4:" << endl;
-	a.set(3, 4);
+	A.set(3, 4);
 
-	a.print();
+	A.print();
 	cout << "Over." << endl;
 	cout << endl;
 
 	cout << "Search function test:" << endl;
-	cout << "if 1 is in list : " << a.isInList(1) << endl;
-	cout << "if 2 is in list : " << a.isInList(2) << endl;
-	cout << "if 4 is in list : " << a.isInList(4) << endl;
-	cout << "if -1 is in list : " << a.isInList(-1) << endl;
+	cout << "if 1 is in list : " << A.isInList(1) << endl;
+	cout << "if 2 is in list : " << A.isInList(2) << endl;
+	cout << "if 4 is in list : " << A.isInList(4) << endl;
+	cout << "if -1 is in list : " << A.isInList(-1) << endl;
 
 	cout << "Over." << endl;
 	cout << endl;
 
-	cout << "Init objects with initializer list & output operator overload test:" << endl;
-	LinkedList B = {3, 2, 1}, C = {11, 3, 0, -3};
-	cout << B  << "; " << C << "; " << endl;
+	cout << "Init objects with initializer list:" << endl;
+	SingleLinkedList<int> B = {3, 2, 1}, C = {11, 3, 0, -3};
+	B.print();
+	C.print();
 
 	cout << "Merge function test:" << endl;
 	B.merge(C);
-	cout << B << endl;
+	B.print();
 	cout << B.size() << endl;
 
 	cout << endl;

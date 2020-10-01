@@ -50,6 +50,9 @@ public:
 	
 	void print() const;
 
+	int & operator[](int idx);
+	const int & operator[](int idx) const;
+
 	bool merge(LinkedList & list);
 
 	friend std::ostream & operator << (std::ostream & out, LinkedList& list);

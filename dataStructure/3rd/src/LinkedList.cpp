@@ -193,6 +193,35 @@ void LinkedList::print() const {
 	std::cout << "]" << std::endl;
 }
 
+// Overloading function for [] to access nodes of list.
+// Return the data of head node (which is 0) if index is no available.
+int & LinkedList::operator[] (int idx) {
+	if (idx < 0 || idx >= m_size) {
+		std::cout << "Index error!" << std::endl;
+		return m_head -> m_data;
+	}
+
+	Node * p = m_head -> m_next;
+	for (int i = 0; i < idx; ++ i) {
+		p = p -> m_next;
+	}
+
+	return p -> m_data;
+}
+const int & LinkedList::operator[] (int idx) const{
+	if (idx < 0 || idx >= m_size) {
+		std::cout << "Index error!" << std::endl;
+		return m_head -> m_data;
+	}
+
+	Node * p = m_head -> m_next;
+	for (int i = 0; i < idx; ++ i) {
+		p = p -> m_next;
+	}
+
+	return p -> m_data;
+}
+
 bool LinkedList::merge(LinkedList & list) {
 	Node * p = m_head -> m_next;
 	Node * pl = list.m_head -> m_next;
