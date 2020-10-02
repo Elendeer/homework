@@ -1,3 +1,11 @@
+/*********************************************
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-10-01 14:29:25
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-10-02 21:03:53
+ * @Description  :
+*********************************************/
+
 #ifndef _SINGEL_LINKED_LIST_HPP_
 #define _SINGEL_LINKED_LIST_HPP_
 
@@ -39,7 +47,6 @@ private:
 public:
   SingleLinkedList();
   SingleLinkedList(std::initializer_list<T> list);
-  SingleLinkedList(SingleLinkedList<T> &obj);
   ~SingleLinkedList();
 
   int size() const;
@@ -98,18 +105,6 @@ SingleLinkedList<T>::SingleLinkedList(std::initializer_list<T> list) {
 
   for (auto item : list) {
     this->insert(item);
-  }
-}
-
-// Copy constructor
-template <typename T> SingleLinkedList<T>::SingleLinkedList(SingleLinkedList &obj) {
-  m_head = new Node<T>;
-  m_tail = m_head;
-  m_size = 0;
-
-  Node<T> *p = obj.m_head->m_next;
-  for (; p != nullptr; p = p->m_next) {
-    insert(p->m_data);
   }
 }
 

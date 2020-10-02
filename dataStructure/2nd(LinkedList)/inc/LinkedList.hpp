@@ -1,3 +1,11 @@
+/*********************************************
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-10-01 14:29:25
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-10-02 21:17:07
+ * @Description  :
+*********************************************/
+
 #ifndef _LINKED_LIST_HPP_
 #define _LINKED_LIST_HPP_
 
@@ -37,7 +45,6 @@ private:
 public:
 	LinkedList();
 	LinkedList(std::initializer_list<int> list);
-	LinkedList(LinkedList & obj);
 	~LinkedList();
 
 	int size() const;
@@ -47,7 +54,7 @@ public:
 	bool del(int idx);
 	bool set(int idx, int data);
 	bool isInList(int data);
-	
+
 	void print() const;
 
 	int & operator[](int idx);

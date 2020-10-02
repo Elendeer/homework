@@ -1,3 +1,11 @@
+/*********************************************
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-10-01 14:29:25
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-10-02 21:02:18
+ * @Description  :
+*********************************************/
+
 #include "./../inc/LinkedList.hpp"
 #include <iostream>
 
@@ -41,18 +49,6 @@ LinkedList::LinkedList(std::initializer_list<int> list) {
 	}
 }
 
-// Copy constructor
-LinkedList::LinkedList(LinkedList & obj) {
-	m_head = new Node;
-	m_tail = m_head;
-	m_size = 0;
-
-	Node * p = obj.m_head -> m_next;
-	for (; p != nullptr; p = p -> m_next) {
-		insert(p->m_data);
-	}
-}
-
 LinkedList::~LinkedList() {
 	Node * p = m_head;
 	Node * tmp = nullptr;
@@ -93,7 +89,7 @@ bool LinkedList::insert(int idx, int data) {
 			count ++;
 		}
 	}
-	
+
 	Node * pp = new Node(data); // To create a new node.
 	pp -> m_next = p -> m_next;
 	p -> m_next = pp;
@@ -168,7 +164,7 @@ bool LinkedList::isInList(int data) {
 	for (Node * p = m_head -> m_next; p != nullptr; p = p -> m_next) {
 		if (p -> m_data == data) return true;
 	}
-	
+
 	return false;
 }
 

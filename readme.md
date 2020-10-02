@@ -1,3 +1,11 @@
+<!--
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-10-01 14:29:25
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-10-02 20:35:53
+ * @Description  :
+-->
+
 # A Suck Repository
 
 ## Introduce
@@ -14,8 +22,9 @@ Or you may want to `make` some of them.
 
 ### Something not so suck that you may interested in
 
-**Single LinkedList class** in *./dataStructure/3rd*
-**Single LinkedList template** in *./dataStructure/template*
+- **Single LinkedList class** in *./dataStructure/2nd(LinkedList)*
+
+- **Single LinkedList template** in *./dataStructure/template*
 
 ## License
 

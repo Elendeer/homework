@@ -1,3 +1,11 @@
+/*********************************************
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-10-01 14:29:25
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-10-02 21:17:53
+ * @Description  :
+*********************************************/
+
 #include "./../inc/LinkedList.hpp"
 #include <iostream>
 
