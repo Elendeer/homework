@@ -189,6 +189,9 @@ void LinkedList::print() const {
 	std::cout << "]" << std::endl;
 }
 
+
+/***** Operator overloading. *****/
+
 // Overloading function for [] to access nodes of list.
 // Return the data of head node (which is 0) if index is no available.
 int & LinkedList::operator[] (int idx) {
@@ -240,8 +243,6 @@ bool LinkedList::merge(LinkedList & list) {
 	return true;
 }
 
-
-/***** Operator overloading. *****/
 
 std::ostream & operator << (std::ostream & out, LinkedList & list) {
 	// Basicly use the same operation with print function of LinkedList.

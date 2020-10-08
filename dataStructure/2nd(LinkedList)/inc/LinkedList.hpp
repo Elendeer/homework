@@ -49,14 +49,29 @@ public:
 
 	int size() const;
 
+
+	// Basic operations of LinkedList.
+
+	// Insert a node into list. The index of the node you insert will be 'idx' after
+	// operation. The index of list start from 0.
 	bool insert(int idx, int data);
+
+	// Overloading function of insert, defaultly insert after tail.
 	bool insert(int data);
+
+	// Delete a node.
 	bool del(int idx);
+
 	bool set(int idx, int data);
+
+	// If data is in list, return true, otherwise return false.
 	bool isInList(int data);
 
 	void print() const;
 
+
+	// Overloading function for [] to access nodes of list.
+	// Return the data of head node (which is 0) if index is no available.
 	int & operator[](int idx);
 	const int & operator[](int idx) const;
 

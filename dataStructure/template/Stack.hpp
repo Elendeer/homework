@@ -8,8 +8,12 @@
 template <typename T>
 class Stack {
 private:
+	// pointer of stack array.
 	T* m_stack;
+
+	// index of top element.
 	int m_top;
+
 public:
 	Stack();
 	Stack(std::initializer_list<T> list);
@@ -18,18 +22,36 @@ public:
 
 	// Basic operations.
 
+	// Push a data into the stack, return fales if memory overfloat.
 	bool push(T data);
+
+	// Pop a data from the stack, return false if stack is empty.
 	bool pop();
+
+	// Clear the stack, pop out everythings.
 	void clear();
 
 	
 	// Get things.
 
+	// Returns ture if stack is empty.
 	bool empty() const;
+
+	// Returns the number of elements in the stack.
 	int top() const;
+
+	// Print the stack.
 	int size();
 
+
+	// Print the stack.
 	void print();
+
+	// Functions for iterator.
+
+	T* begin() const;
+	T* end() const;
+
 };
 
 
@@ -41,6 +63,7 @@ Stack<T>::Stack() : m_top(0){
 	if (!(m_stack = new T [101])) {
 		std::cout << "Memory error" << std::endl;
 	}
+
 }
 
 template <typename T>
@@ -73,7 +96,7 @@ Stack<T>::Stack(int len) : m_top(0) {
 template <typename T>
 Stack<T>::~Stack() {
 	delete [] m_stack;
-	std::cout << "Done." << std::endl;
+	// std::cout << "Done." << std::endl;
 }
 
 /***** Basic operations *****/
@@ -138,4 +161,19 @@ void Stack<T>::print() {
 	if (m_top != 0) std::cout << m_stack[m_top];
 	std::cout << "]" << std::endl;
 }
+
+
+
+/***** Functions for iterator *****/
+
+template <typename T>
+T * Stack<T>::begin() const {
+	return m_stack + 1;
+}
+
+template <typename T>
+T * Stack<T>::end() const {
+	return m_stack + 1 + m_top;
+}
+
 #endif
