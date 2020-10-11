@@ -38,7 +38,7 @@ public:
 	bool empty() const;
 
 	// Returns the number of elements in the stack.
-	int top() const;
+	T top() const;
 
 	// Print the stack.
 	int size();
@@ -137,7 +137,7 @@ bool Stack<T>::empty() const {
 }
 
 template <typename T>
-int Stack<T>::top() const {
+T Stack<T>::top() const {
 	if (m_top == 0) {
 		std::cout << "Stack is empty" << std::endl;
 		return 0;

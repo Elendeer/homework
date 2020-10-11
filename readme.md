@@ -26,6 +26,8 @@ Or you may want to `make` some of them.
 
 - **Single LinkedList template** in *./dataStructure/template*
 
+- **Simple Calculator** in *./dataStructure/3rd(Stack)/apps/calculator*
+
 ## License
 
 MIT.
