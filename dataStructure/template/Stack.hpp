@@ -28,8 +28,8 @@ public:
 	// Pop a data from the stack, return false if stack is empty.
 	bool pop();
 
-	// Clear the stack, pop out everythings.
-	void clear();
+	// Clean the stack, pop out everythings.
+	void clean();
 
 	
 	// Get things.
@@ -124,7 +124,7 @@ bool Stack<T>::pop() {
 }
 
 template <typename T>
-void Stack<T>::clear() {
+void Stack<T>::clean() {
 	m_top = 0;
 }
 

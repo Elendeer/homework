@@ -6,9 +6,11 @@ int main() {
 	using namespace std;
 	Calculator A;
 
-	cout << "A very simple calculate wrote with stack." << endl;
-	cout << "You can use '+', '-', '*', '/', '(', and ')" << endl;
-	cout << "Input 'q' to quit." << endl;
+	cout << "=========================================================" << endl;
+	cout << "+\tA very simple calculate wrote with stack.\t+" << endl;
+	cout << "+\tYou can use '+', '-', '*', '/', '(', and ')\t+" << endl;
+	cout << "+\tInput 'q' to quit.\t\t\t\t+" << endl;
+	cout << "=========================================================" << endl;
 
 
 	while (true) {
@@ -17,7 +19,8 @@ int main() {
 			double a = A.calculate();
 			cout << ">> " << a << endl;
 		}
-		catch (int){
+		catch (int code){
+			cout << "Read 'q', quit." << endl;
 			break;
 		}
 

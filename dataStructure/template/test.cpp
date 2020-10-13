@@ -41,7 +41,7 @@ int main() {
 	A.push(222.789);
 	A.push(3.5);
 	A.print();
-	A.clear();
+	A.clean();
 	A.print();
 
 	return 0;

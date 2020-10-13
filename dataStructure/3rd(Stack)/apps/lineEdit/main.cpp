@@ -18,7 +18,7 @@ int main() {
 				break;
 
 			case '@':
-				s.clear();
+				s.clean();
 				break;
 
 			default:

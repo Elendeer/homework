@@ -10,6 +10,7 @@ Calculator::~Calculator() {
 
 
 // Calculate a result from user's input.
+// Throw a exception(int 0) when receive a 'q'.
 double Calculator::calculate() {
 	m_current_char = getchar();
 
@@ -24,12 +25,26 @@ double Calculator::calculate() {
 				|| m_current_char == '*' || m_current_char == '/'
 				|| m_current_char == '(' || m_current_char == ')') {
 
-			readOp();
-			continue;
-			// m_ops.push(m_current_char);
-			// m_current_char = getchar();
-		}
+			try {
+				readOp();
+			}
+			catch (int error_code) {
+				if (error_code == -1) {
+					std::cout << "Invaild syntax. Expected more operands."
+						<< std::endl;
+					this -> clean();
+				}
+				else if (error_code == -2) {
+					std::cout << "Invaild syntax. Expected paired parentheses."
+						<< std::endl;
+					this -> clean();
+				}
 
+				break;
+			}
+
+			continue;
+		}
 
 		// 'q' for quit.
 		if (m_current_char == 'q') {
@@ -42,23 +57,33 @@ double Calculator::calculate() {
 		}
 	}
 
-	// for (auto i : m_nums) {
-	// 	std::cout << i << " ";
-	// }
-	// std::cout << std::endl;
-	// for (auto i : m_ops) {
-	// 	std::cout << i << " ";
-	// }
-	// std::cout << std::endl;
 
 	while (!m_ops.empty()) {
-		useOp();
+		try {
+			useOp();
+		}
+		catch (int error_code) {
+			if (error_code == -1) {
+				std::cout << "Invaild syntax. Expected more operands."
+					<< std::endl;
+				this -> clean();
+			}
+			else if (error_code == -2) {
+				std::cout << "Invaild syntax. Expected paired parentheses."
+					<< std::endl;
+				this -> clean();
+			}
+
+			break;
+		}
 	}
 
 	return m_nums.top();
 }
 
+
 // Read a number(double is fine).
+// It will not return false in fact.
 bool Calculator::readNum() {
 	double num = (double)(m_current_char - '0');
 
@@ -88,6 +113,8 @@ bool Calculator::readNum() {
 	return m_nums.push(num);
 }
 
+// Read a operator from the input.
+// It will not return false in fact.
 bool Calculator::readOp() {
 	if (m_ops.empty() || m_ops.top() == '(') {
 		m_ops.push(m_current_char);
@@ -151,14 +178,20 @@ bool Calculator::readOp() {
 	return true;
 }
 
+// Ues a operator in the stack, which means pop it and do calculate.
+// Throw exception if there is any mistack when using a operator.
 void Calculator::useOp() {
 	double a, b;
 	char c = m_ops.top();
 	switch (c) {
 		case '+':
-			a = m_nums.top();
+			if (!(a = m_nums.top())) {
+				throw -1;
+			}
 			m_nums.pop();
-			b = m_nums.top();
+			if (!(b = m_nums.top())) {
+				throw -1;
+			}
 			m_nums.pop();
 
 			m_ops.pop();
@@ -166,9 +199,13 @@ void Calculator::useOp() {
 			break;
 
 		case '-':
-			a = m_nums.top();
+			if (!(a = m_nums.top())) {
+				throw -1;
+			}
 			m_nums.pop();
-			b = m_nums.top();
+			if (!(b = m_nums.top())) {
+				throw -1;
+			}
 			m_nums.pop();
 
 			m_ops.pop();
@@ -176,9 +213,13 @@ void Calculator::useOp() {
 			break;
 
 		case '*':
-			a = m_nums.top();
+			if (!(a = m_nums.top())) {
+				throw -1;
+			}
 			m_nums.pop();
-			b = m_nums.top();
+			if (!(b = m_nums.top())) {
+				throw -1;
+			}
 			m_nums.pop();
 
 			m_ops.pop();
@@ -186,9 +227,13 @@ void Calculator::useOp() {
 			break;
 
 		case '/':
-			a = m_nums.top();
+			if (!(a = m_nums.top())) {
+				throw -1;
+			}
 			m_nums.pop();
-			b = m_nums.top();
+			if (!(b = m_nums.top())) {
+				throw -1;
+			}
 			m_nums.pop();
 
 			m_ops.pop();
@@ -196,6 +241,13 @@ void Calculator::useOp() {
 			break;
 
 		default:
+			throw -2;
 			break;
 	}
+}
+
+// Clean up tow stacks of calculator.
+void Calculator::clean() {
+	m_nums.clean();
+	m_ops.clean();
 }
