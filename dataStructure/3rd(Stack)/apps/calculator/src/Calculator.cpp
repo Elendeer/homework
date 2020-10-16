@@ -9,78 +9,6 @@ Calculator::~Calculator() {
 
 
 
-// Calculate a result from user's input.
-// Throw a exception(int 0) when receive a 'q'.
-double Calculator::calculate() {
-	m_current_char = getchar();
-
-	while (m_current_char != '\n') {
-		if (m_current_char >= '0' && m_current_char <= '9') {
-			// You can always get a new char after readNum function.
-			readNum();
-			continue;
-		}
-
-		if (m_current_char == '+' || m_current_char == '-'
-				|| m_current_char == '*' || m_current_char == '/'
-				|| m_current_char == '(' || m_current_char == ')') {
-
-			try {
-				readOp();
-			}
-			catch (int error_code) {
-				if (error_code == -1) {
-					std::cout << "Invaild syntax. Expected more operands."
-						<< std::endl;
-					this -> clean();
-				}
-				else if (error_code == -2) {
-					std::cout << "Invaild syntax. Expected paired parentheses."
-						<< std::endl;
-					this -> clean();
-				}
-
-				break;
-			}
-
-			continue;
-		}
-
-		// 'q' for quit.
-		if (m_current_char == 'q') {
-			throw 0;
-		}
-
-		// Skip the space.
-		if (m_current_char == ' ') {
-			m_current_char = getchar();
-		}
-	}
-
-
-	while (!m_ops.empty()) {
-		try {
-			useOp();
-		}
-		catch (int error_code) {
-			if (error_code == -1) {
-				std::cout << "Invaild syntax. Expected more operands."
-					<< std::endl;
-				this -> clean();
-			}
-			else if (error_code == -2) {
-				std::cout << "Invaild syntax. Expected paired parentheses."
-					<< std::endl;
-				this -> clean();
-			}
-
-			break;
-		}
-	}
-
-	return m_nums.top();
-}
-
 
 // Read a number(double is fine).
 // It will not return false in fact.
@@ -104,7 +32,7 @@ bool Calculator::readNum() {
 
 			while (m_current_char >= '0' && m_current_char <= '9') {
 				num = num + (double)(m_current_char - '0') / (10 * count);
-				count ++;
+				count *= 10;
 				m_current_char = getchar();
 			}
 		}
@@ -185,12 +113,19 @@ void Calculator::useOp() {
 	char c = m_ops.top();
 	switch (c) {
 		case '+':
-			if (!(a = m_nums.top())) {
+			if (m_nums.empty()) {
 				throw -1;
 			}
+			else {
+				a = m_nums.top();
+			}
 			m_nums.pop();
-			if (!(b = m_nums.top())) {
+
+			if (m_nums.empty()) {
 				throw -1;
+			}
+			else {
+				b = m_nums.top();
 			}
 			m_nums.pop();
 
@@ -199,12 +134,19 @@ void Calculator::useOp() {
 			break;
 
 		case '-':
-			if (!(a = m_nums.top())) {
+			if (m_nums.empty()) {
 				throw -1;
 			}
+			else {
+				a = m_nums.top();
+			}
 			m_nums.pop();
-			if (!(b = m_nums.top())) {
+
+			if (m_nums.empty()) {
 				throw -1;
+			}
+			else {
+				b = m_nums.top();
 			}
 			m_nums.pop();
 
@@ -213,12 +155,19 @@ void Calculator::useOp() {
 			break;
 
 		case '*':
-			if (!(a = m_nums.top())) {
+			if (m_nums.empty()) {
 				throw -1;
 			}
+			else {
+				a = m_nums.top();
+			}
 			m_nums.pop();
-			if (!(b = m_nums.top())) {
+
+			if (m_nums.empty()) {
 				throw -1;
+			}
+			else {
+				b = m_nums.top();
 			}
 			m_nums.pop();
 
@@ -227,12 +176,19 @@ void Calculator::useOp() {
 			break;
 
 		case '/':
-			if (!(a = m_nums.top())) {
+			if (m_nums.empty()) {
 				throw -1;
 			}
+			else {
+				a = m_nums.top();
+			}
 			m_nums.pop();
-			if (!(b = m_nums.top())) {
+
+			if (m_nums.empty()) {
 				throw -1;
+			}
+			else {
+				b = m_nums.top();
 			}
 			m_nums.pop();
 
@@ -250,4 +206,89 @@ void Calculator::useOp() {
 void Calculator::clean() {
 	m_nums.clean();
 	m_ops.clean();
+}
+
+
+// Calculate a result from user's input.
+// Throw a exception(int 0) when receive a 'q'.
+double Calculator::calculate() {
+	m_current_char = getchar();
+
+	while (m_current_char != '\n') {
+		if (m_current_char >= '0' && m_current_char <= '9') {
+			readNum();
+			continue;
+		}
+
+		else if (m_current_char == '+' || m_current_char == '-'
+			|| m_current_char == '*' || m_current_char == '/'
+			|| m_current_char == '(' || m_current_char == ')') {
+
+			try {
+				readOp();
+			}
+			catch (int error_code) {
+				if (error_code == -1) {
+					std::cout << "Invaild syntax. Expected more operands."
+						<< std::endl;
+					this -> clean();
+				}
+				else if (error_code == -2) {
+					std::cout << "Invaild syntax. Expected paired parentheses."
+						<< std::endl;
+					this -> clean();
+				}
+
+				break;
+			}
+
+			continue;
+		}
+
+		// 'q' for quit.
+		else if (m_current_char == 'q') {
+			throw 0;
+		}
+
+		// Skip the space.
+		else if (m_current_char == ' ') {
+			m_current_char = getchar();
+		}
+
+		// Other tokens.
+		else {
+			std::cout << "Invaild syntax. Read unexpected token."
+				<< std::endl;
+			this -> clean();
+			break;
+		}
+	}
+
+
+	while (!m_ops.empty()) {
+		try {
+			useOp();
+		}
+		catch (int error_code) {
+			if (error_code == -1) {
+				std::cout << "Invaild syntax. Expected more operands."
+					<< std::endl;
+				this -> clean();
+			}
+			else if (error_code == -2) {
+				std::cout << "Invaild syntax. Expected paired parentheses."
+					<< std::endl;
+				this -> clean();
+			}
+
+			break;
+		}
+	}
+
+	if (!m_nums.empty()) {
+		double result = m_nums.top();
+		this -> clean();
+		return result;
+	}
+	else return 0;
 }
