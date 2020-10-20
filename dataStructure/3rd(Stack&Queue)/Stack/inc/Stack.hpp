@@ -1,3 +1,11 @@
+/*********************************************
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-10-10 09:37:07
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-10-13 13:21:23
+ * @Description  :
+*********************************************/
+
 #ifndef _STACK_HPP_
 #define _STACK_HPP_
 
@@ -25,9 +33,8 @@ public:
 	bool pop();
 
 	// Clear the stack, pop out everythings.
-	void clear();
+	void clean();
 
-	
 	// Get things.
 
 	// Returns ture if stack is empty.

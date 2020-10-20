@@ -43,6 +43,8 @@ bool Calculator::readNum() {
 
 // Read a operator from the input.
 // It will not return false in fact.
+// But it will try to ues a operator when some specific circumstances,
+// so it may throw a exception.
 bool Calculator::readOp() {
 	if (m_ops.empty() || m_ops.top() == '(') {
 		m_ops.push(m_current_char);
