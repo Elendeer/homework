@@ -9,7 +9,7 @@
 Node::BinaryTreeNode() :
 	m_data(0), m_left(nullptr), m_right(nullptr) {
 	
-	std::cout << "Node created" << std::endl;
+	// std::cout << "Node created" << std::endl;
 }
 
 Node::BinaryTreeNode(int data, Node * left, Node * right) :
@@ -22,7 +22,7 @@ Node::~BinaryTreeNode() {
 	if (m_left != nullptr) delete m_left;
 	if (m_right != nullptr) delete m_right;
 
-	std::cout << "Node destoryed : " << m_data << std::endl;
+	// std::cout << "Node destoryed : " << m_data << std::endl;
 }
 
 int Node::getData() const {
@@ -106,19 +106,18 @@ void BinaryNodeVisitor::postorderVisit(Node * pnode) {
 }
 
 void BinaryNodeVisitor::countTree(Node * pnode, int cur_depth) {
+
+	m_nodes ++;
+
 	if (pnode->getLeft() == nullptr &&
 		pnode->getRight() == nullptr) {
 
 		m_leaves ++;
-		m_nodes ++;
 		
-		if (cur_depth > m_depth) {
-			m_depth = cur_depth;
-			return;
-		}
+		if (cur_depth > m_depth) m_depth = cur_depth;
+			
+		return;
 	}
-
-	m_nodes ++;
 
 	if (pnode->getLeft() != nullptr) {
 		this->countTree(pnode->getLeft(), cur_depth + 1);

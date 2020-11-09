@@ -5,7 +5,7 @@
 int main() {
 	using namespace std;
 
-	string s = "12n3n4nn345nn6nnnn";
+	string s = "123nn3n4nn345nn6nnnn";
 	BinaryTree t(s);
 
 	cout << "Preorder Taversed: ";
@@ -19,6 +19,7 @@ int main() {
 	cout << "Leaves: " << t.getLeavesNum() << endl;
 	cout << "Nodes: " << t.getNodesNum() << endl;
 
+	cout << "Visualization:" << endl;
 	t.draw();
 
 
