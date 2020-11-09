@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-10-13 13:00:24
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-10-14 17:33:16
+ * @LastEditTime : 2020-10-31 21:00:00
  * @Description  :
 *********************************************/
 
@@ -45,7 +45,7 @@ int main() {
     cout << endl;
 
 	// cout << "Stack : " << endl;
-	s.print();
+	// s.print();
 
 
 
