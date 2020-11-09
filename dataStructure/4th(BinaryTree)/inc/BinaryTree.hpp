@@ -55,14 +55,36 @@ public:
 
 
 // A visitor to visit binary tree nodes.
-class Node_visitor {
+class BinaryNodeVisitor {
 private:
-	
-public:
-	Node_visitor();
-	~Node_visitor();
+	int m_depth, m_leaves, m_nodes;
+	// m_tree for a full tree. Will be used when this -> draw().
+	int * m_tree;
 
-	void visit(Node * pnode);
+	void countTree(Node * pnode, int cur_depth);
+public:
+	BinaryNodeVisitor();
+	~BinaryNodeVisitor();
+
+	// Print the preorder visit string of the tree whose root is pnode pointing to.
+	void preorderVisit(Node * pnode);
+	// Print the inorder visit string of the tree whose root is pnode pointing to.
+	void inorderVisit(Node * pnode);
+	// Print the postorder visit string of the tree whose root is pnode pointing to.
+	void postorderVisit(Node * pnode);
+
+	// Return the depth of the tree whose root is pnode pointing to.
+	int depth(Node * pnode);
+	// Return the number of leaves of the tree whose root is pnode pointing to.
+	int leaves(Node * pnode);
+	// Return the number of node of the tree whose root is pnode pointing to.
+	int nodes(Node * pnode);
+
+	void draw(int width,Node * pnode);
+
+	// Create a full binary tree for draw and store it in a arrary.
+	// Return the arrary.
+	void createFulltree(Node * root, int * array, bool * map, int idx);
 };
 
 
@@ -70,7 +92,7 @@ class BinaryTree {
 private:
 	Node * m_root;
 	POT_Parser m_parser;
-	Node_visitor m_visitor;
+	BinaryNodeVisitor m_visitor;
 
 
 public:
@@ -84,7 +106,22 @@ public:
 	Node * getRoot() const;
 
 	// Print the preordered trverse of this binary tree.
-	void printPOT();
+	void printDLR();
+	// Print the inordered trverse of this binary tree.
+	void printLDR();
+	// Print the postordered trverse of this binary tree.
+	void printLRD();
+
+	// Get the depth of tree.
+	int getDepth();
+	// Get the number leaves of tree.
+	int getLeavesNum();
+	// Get the number nodes of tree.
+	int getNodesNum();
+
+	// Draw a ascii picture of tree.
+	void draw();
+
 };
 
 #endif
