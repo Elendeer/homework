@@ -2,12 +2,20 @@
 
 Construct a mini interpreter using the knowledge of fundamentals of compiling.
 
+- 总行数;
+- 空行数;
+- 注释;
+- 函数;
+
 ## Lexer
 
 ```cpp
 // Token的类型，使用枚举增加可读性
 enum TokenType {
-    ...
+    ANY,
+    NEWLINE,
+    COMMENT_START,
+    COMMENT_END,
 };
 
 class Token {
