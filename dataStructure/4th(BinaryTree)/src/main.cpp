@@ -1,3 +1,11 @@
+/*********************************************
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-11-26 14:43:45
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-11-26 15:18:58
+ * @Description  :
+*********************************************/
+
 #include <iostream>
 #include "../inc/BinaryTree.hpp"
 
@@ -8,11 +16,11 @@ int main() {
 	string s = "123nn3n4nn345nn6nnnn";
 	BinaryTree t(s);
 
-	cout << "Preorder Taversed: ";
+	cout << "Preorder Traversed: ";
 	t.printDLR();
-	cout << "Inorder Taversed: ";
+	cout << "Inorder Traversed: ";
 	t.printLDR();
-	cout << "Postorder Taversed: ";
+	cout << "Postorder Traversed: ";
 	t.printLRD();
 
 	cout << "Depth: " << t.getDepth() << endl;

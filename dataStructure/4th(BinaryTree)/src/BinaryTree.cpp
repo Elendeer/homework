@@ -8,7 +8,7 @@
 
 Node::BinaryTreeNode() :
 	m_data(0), m_left(nullptr), m_right(nullptr) {
-	
+
 	// std::cout << "Node created" << std::endl;
 }
 
@@ -113,9 +113,9 @@ void BinaryNodeVisitor::countTree(Node * pnode, int cur_depth) {
 		pnode->getRight() == nullptr) {
 
 		m_leaves ++;
-		
+
 		if (cur_depth > m_depth) m_depth = cur_depth;
-			
+
 		return;
 	}
 
@@ -166,7 +166,7 @@ void BinaryNodeVisitor::draw(int depth, Node * pnode) {
 	// length -= 1;
 
 	int * array = new int [length];
-	bool * map = new bool [length];
+	bool * map = new bool [length]();
 
 	this -> createFulltree(pnode, array, map, 1);
 
@@ -337,7 +337,7 @@ int BinaryTree::getNodesNum() {
 
 void BinaryTree::draw() {
 	int depth = m_visitor.depth(m_root);
-	
+
 	// int width = 1;
 	// for (int i = 1; i < depth; ++ i) {
 	// 	width *= 2;
