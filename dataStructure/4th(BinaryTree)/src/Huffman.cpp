@@ -1,6 +1,14 @@
+/*********************************************
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-12-12 17:23:28
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-12-12 18:24:19
+ * @Description  :
+*********************************************/
 #include "../inc/Huffman.hpp"
 #include <queue>
 #include <vector>
+#include <iostream>
 
 /****** Node class *****/
 
@@ -21,13 +29,49 @@ int HNode::getChar() const {
 HNode * HNode::getParent() const {
 	return m_parent;
 }
+HNode * HNode::getLeft() const {
+	return m_left;
+}
+HNode * HNode::getRight() const {
+	return m_right;
+}
+
+void HNode::setParent(HNode * parent) {
+	m_parent = parent;
+}
 
 /****** HuffmanEncoder class *****/
 
-HuffmanEncoder::HuffmanEncoder(std::string text) : m_text(text) {
+void HuffmanEncoder::dfs(HNode * p) {
+	using std::cout;
+	using std::endl;
+
+	if (p -> getChar() != '#') {
+		cout << (char)p -> getChar() << " : ";
+
+		for (auto i : m_encode) {
+			cout << i;
+		}
+		cout << endl;
+	}
+
+	if (p -> getLeft() != nullptr) {
+		m_encode.push_back(0);
+		dfs(p -> getLeft());
+		m_encode.pop_back();
+	}
+	if (p -> getRight() != nullptr) {
+		m_encode.push_back(1);
+		dfs(p -> getRight());
+		m_encode.pop_back();
+	}
+}
+
+HuffmanEncoder::HuffmanEncoder(std::string text) : m_text(text) , m_root(nullptr) {
 }
 
 HuffmanEncoder::~HuffmanEncoder() {
+	if (m_root != nullptr) delete m_root;
 }
 
 HNode * HuffmanEncoder::encode() {
@@ -79,8 +123,15 @@ HNode * HuffmanEncoder::encode() {
 
 		p = new HNode(p1 -> getWeight() + p2 -> getWeight(), '#', p1, p2);
 
+		p1->setParent(p);
+		p2->setParent(p);
+
 		q.push(p);
 	}
+
+	m_root = q.top();
+
+	dfs(m_root);
 
 	return q.top();
 }

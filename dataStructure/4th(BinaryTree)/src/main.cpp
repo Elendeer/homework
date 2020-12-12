@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-11-26 14:43:45
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-11-26 15:18:58
+ * @LastEditTime : 2020-12-12 18:40:22
  * @Description  :
 *********************************************/
 
@@ -31,9 +31,10 @@ int main() {
 	cout << "Visualization:" << endl;
 	t.draw();
 
-
-	// string hs = "abbcccddddd";
-	// HuffmanEncoder encoder(hs);
+	cout << "HuffmanEncoder test:" << endl;
+	cout << "Input String : \"abbccdddd\"" << endl;
+	HuffmanEncoder encoder("abbcccdddd");
+	encoder.encode();
 
 
 	return 0;
