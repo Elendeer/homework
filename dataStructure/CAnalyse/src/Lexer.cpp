@@ -26,7 +26,12 @@ char Lexer::peek() {
 
 void Lexer::anyWord() {
 	while (m_current_char != ' ' && m_current_char != NOCHAR
-			&& m_current_char != '\n') {
+			&& m_current_char != '\n'
+			&& m_current_char != '/'
+			&& m_current_char != '('
+			&& m_current_char != ')'
+			&& m_current_char != '{'
+			&& m_current_char != '}') {
 		advance();
 	}
 }
@@ -66,6 +71,22 @@ Token Lexer::getNextToken() {
 			advance();
 			advance();
 			return Token(TokenType::COMMENT_END);
+		}
+		else if (m_current_char == '(') {
+			advance();
+			return Token(TokenType::LPAREN);
+		}
+		else if (m_current_char == ')') {
+			advance();
+			return Token(TokenType::RPAREN);
+		}
+		else if (m_current_char == '{') {
+			advance();
+			return Token(TokenType::LBRACE);
+		}
+		else if (m_current_char == '}') {
+			advance();
+			return Token(TokenType::RBRACE);
 		}
 		else {
 			anyWord();

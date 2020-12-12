@@ -16,24 +16,36 @@ void Token::printType() const {
 	using std::endl;
 
 	if (m_type == TokenType::NONE) {
-		cout << "NONE" << endl;
+		cout << "NONE" ;
 	}
 	else if (m_type == TokenType::ANY) {
-		cout << "ANY" << endl;
+		cout << "ANY" ;
 	}
 	else if (m_type == TokenType::NEWLINE) {
-		cout << "NEWLINE" << endl;
+		cout << "NEWLINE" ;
 	}
 	else if (m_type == TokenType::COMMENT) {
-		cout << "COMMENT" << endl;
+		cout << "COMMENT" ;
 	}
 	else if (m_type == TokenType::COMMENT_START) {
-		cout << "COMMENT_START" << endl;
+		cout << "COMMENT_START" ;
 	}
 	else if (m_type == TokenType::COMMENT_END) {
-		cout << "COMMENT_END" << endl;
+		cout << "COMMENT_END" ;
+	}
+	else if (m_type == TokenType::LPAREN) {
+		cout << "LPAREN" ;
+	}
+	else if (m_type == TokenType::RPAREN) {
+		cout << "RPAREN" ;
+	}
+	else if (m_type == TokenType::LBRACE) {
+		cout << "LBRACE" ;
+	}
+	else if (m_type == TokenType::RBRACE) {
+		cout << "RBRACE" ;
 	}
 	else if (m_type == TokenType::END) {
-		cout << "END" << endl;
+		cout << "END" ;
 	}
 }

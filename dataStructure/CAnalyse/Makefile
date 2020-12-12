@@ -4,7 +4,7 @@ CXX = g++
 CXXFLAGES = -Wall -Werror -Wextra -pedantic -std=c++17 -g
 
 vpath %.cpp src
-SRC = main.cpp Token.cpp Lexer.cpp Parser.cpp
+SRC = main.cpp Token.cpp Lexer.cpp Parser.cpp Interpreter.cpp
 OBJ = $(SRC:.cpp=.o)
 EXEC = main
 

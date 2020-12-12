@@ -2,12 +2,12 @@
 #define __PARSER_HPP__
 
 #include "Lexer.hpp"
+#include <vector>
 
 class Parser {
 private :
 	Lexer m_lexer;
 	Token m_current_token;
-	Token m_last_token;
 
 	// m_last_token = m_current_token;
 	// m_current_token = m_lexer.getNextToken();
@@ -17,7 +17,7 @@ public :
 	Parser(Lexer lexer);
 	~Parser();
 
-	void parse();
+	std::vector<Token> parse();
 };
 
 

@@ -1,9 +1,11 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 #include "../inc/Token.hpp"
 #include "../inc/Lexer.hpp"
 #include "../inc/Parser.hpp"
+#include "../inc/Interpreter.hpp"
 
 int main () {
 	using namespace std;
@@ -11,7 +13,7 @@ int main () {
 	string src;
 
 	ifstream reader;
-	reader.open("/home/daniel/CodeProject/homework/dataStructure/CAnalyse/test.c", ios::in);
+	reader.open("/home/daniel/CodeProject/homework/dataStructure/CAnalyse/test2.c", ios::in);
 
 	while (!reader.eof()) {
 		src += reader.get();
@@ -22,18 +24,14 @@ int main () {
 	reader.close();
 
 	Lexer lexer(src);
-	// Token token;
-	// token = lexer.getNextToken();
-
-	// while (token.getType() != TokenType::END) {
-	// 	token.printType();
-	// 	token = lexer.getNextToken();
-	// }
-	// token.printType();
-	
-
 	Parser parser(lexer);
-	parser.parse();
+	Interpreter interpreter(parser);
 
+	interpreter.printTokens();
+	cout << endl;
+	interpreter.interprete();
+	cout << endl;
+	interpreter.printResult();
+	
 	return 0;
 }
