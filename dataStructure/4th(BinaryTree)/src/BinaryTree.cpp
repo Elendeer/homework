@@ -337,12 +337,5 @@ int BinaryTree::getNodesNum() {
 
 void BinaryTree::draw() {
 	int depth = m_visitor.depth(m_root);
-
-	// int width = 1;
-	// for (int i = 1; i < depth; ++ i) {
-	// 	width *= 2;
-	// }
-	// std::cout << width << std::endl;
-
 	this -> m_visitor.draw(depth, m_root);
 }
