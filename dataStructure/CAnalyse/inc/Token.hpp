@@ -5,10 +5,18 @@ enum class TokenType {
 	NONE,
 
 	ANY,
+
 	NEWLINE,
 	COMMENT,
 	COMMENT_START,
 	COMMENT_END,
+
+	LPAREN,
+	RPAREN,
+
+	LBRACE,
+	RBRACE,
+
 	END
 };
 

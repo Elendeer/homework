@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../inc/BinaryTree.hpp"
+#include "../inc/Huffman.hpp"
 
 
 int main() {
@@ -22,6 +23,9 @@ int main() {
 	cout << "Visualization:" << endl;
 	t.draw();
 
+
+	// string hs = "abbcccddddd";
+	// HuffmanEncoder encoder(hs);
 
 
 	return 0;

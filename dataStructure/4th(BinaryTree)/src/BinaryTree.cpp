@@ -166,7 +166,7 @@ void BinaryNodeVisitor::draw(int depth, Node * pnode) {
 	// length -= 1;
 
 	int * array = new int [length];
-	bool * map = new bool [length];
+	bool * map = new bool [length]();
 
 	this -> createFulltree(pnode, array, map, 1);
 

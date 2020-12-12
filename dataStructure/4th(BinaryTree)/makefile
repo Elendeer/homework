@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGES = -Wall -Werror -Wextra -pedantic -std=c++17 -g
 
 vpath %.cpp src
-SRC = main.cpp BinaryTree.cpp
+SRC = main.cpp BinaryTree.cpp Huffman.cpp
 OBJ = $(SRC:.cpp=.o)
 EXEC = main
 
