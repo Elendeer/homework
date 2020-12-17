@@ -36,8 +36,22 @@ void Interpreter::multiple_comment() {
 	}
 
 	// For NEWLINE after COMMENT_END.
+	// ++ m_comment_lines;
+
 	// TODO: Have a bug when meet COMMENT_END ANY* COMMENT_START 
-	++ m_comment_lines;
+
+	bool met_comment_start = false;
+	for (int tmp = m_idx; m_tokenlist[tmp].getType() != TokenType::NEWLINE; ++ tmp) {
+		if (m_tokenlist[tmp].getType() == TokenType::COMMENT_START) {
+			met_comment_start = true;
+			break;
+		}
+	}
+
+	if (!met_comment_start) {
+		++ m_comment_lines;
+	}
+
 
 	advance();
 }

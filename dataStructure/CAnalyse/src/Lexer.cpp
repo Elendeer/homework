@@ -36,6 +36,21 @@ void Lexer::anyWord() {
 	}
 }
 
+void Lexer::anyString() {
+	// Skip the first '"'.
+	advance();
+	while (m_current_char != '"') {
+		// for escape character back slash.
+		if (m_current_char == '\\') {
+			advance();
+		}
+		advance();
+	}
+	// Skip the last '"'.
+	advance();
+}
+
+
 /***** Public functions *****/
 
 Lexer::Lexer(std::string text) : m_text(text), m_pos(0){
@@ -87,6 +102,10 @@ Token Lexer::getNextToken() {
 		else if (m_current_char == '}') {
 			advance();
 			return Token(TokenType::RBRACE);
+		}
+		else if (m_current_char == '"') {
+			anyString();
+			return Token(TokenType::ANY);
 		}
 		else {
 			anyWord();

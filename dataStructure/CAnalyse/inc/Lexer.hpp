@@ -29,6 +29,9 @@ private :
 	// Read any words.
 	void anyWord();
 
+	// Read any string.
+	void anyString();
+
 public :
 	Lexer(std::string text);
 	~Lexer();
