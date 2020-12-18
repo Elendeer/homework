@@ -194,9 +194,17 @@ void Interpreter::interprete() {
 
 void Interpreter::printTokens() {
 	using std::cout;
+	using std::endl;
+
 	for (auto i : m_tokenlist) {
 		i.printType();
-		cout << " ";
+
+		if (i.getType() == TokenType::NEWLINE) {
+			cout << endl;
+		}
+		else {
+			cout << " ";
+		}
 	}
 }
 
