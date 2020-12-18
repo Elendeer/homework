@@ -15,8 +15,14 @@ private:
 
 	void multiple_comment();
 	void function();
+
+	char judge_lines();
+	char judge_empty_lines();
+	char judge_comment_lines();
+
 public:
 	Interpreter(Parser parser);
+	~Interpreter();
 
 	void interprete();
 	void printTokens();

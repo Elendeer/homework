@@ -39,7 +39,7 @@ int main (int argc, char * argv[]) {
 	string src;
 
 	ifstream reader;
-	reader.open("/home/daniel/CodeProject/homework/dataStructure/CAnalyse/test2.c", ios::in);
+	reader.open("/home/daniel/CodeProject/homework/dataStructure/CAnalyse/test.c", ios::in);
 
 	while (!reader.eof()) {
 		src += reader.get();

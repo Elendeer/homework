@@ -1,13 +1,5 @@
 #include "../inc/Interpreter.hpp"
 
-Interpreter::Interpreter(Parser parser) :
-	m_parser(parser), m_lines(0), m_empty_lines(0),
-	m_comment_lines(0),m_functions(0) {
-
-		m_tokenlist = m_parser.parse();
-		m_idx = 0;
-	}
-
 
 void Interpreter::advance() {
 	++ m_idx;
@@ -23,11 +15,12 @@ void Interpreter::multiple_comment() {
 		if (type == TokenType::NEWLINE) {
 			++ m_lines;
 			++ m_comment_lines;
-			advance();
 
 			if (peekType() == TokenType::NEWLINE) {
 				++ m_empty_lines;
 			}
+
+			advance();
 		}
 		else {
 			advance();
@@ -35,10 +28,6 @@ void Interpreter::multiple_comment() {
 		type = m_tokenlist[m_idx].getType();
 	}
 
-	// For NEWLINE after COMMENT_END.
-	// ++ m_comment_lines;
-
-	// TODO: Have a bug when meet COMMENT_END ANY* COMMENT_START 
 
 	bool met_comment_start = false;
 	for (int tmp = m_idx; m_tokenlist[tmp].getType() != TokenType::NEWLINE; ++ tmp) {
@@ -130,6 +119,71 @@ void Interpreter::function() {
 
 	++ m_functions;
 }
+
+char Interpreter::judge_lines() {
+	if (m_lines >= 10 && m_lines <= 15) {
+		return 'A';
+	}
+	else if ((m_lines >= 8 && m_lines <= 9)
+			|| (m_lines >= 16 && m_lines <= 20)) {
+		return 'B';
+	}
+	else if ((m_lines >= 5 && m_lines <= 7)
+			|| (m_lines >= 21 && m_lines <= 24)) {
+		return 'C';
+	}
+	else {
+		return 'D';
+	}
+}
+char Interpreter::judge_empty_lines() {
+	double rate = (double)m_empty_lines / m_lines;
+
+	if (rate >= 0.15 && rate <= 0.25) {
+		return 'A';
+	}
+	else if ((rate >= 0.1 && rate <= 0.14)
+			|| (rate >= 0.26 && rate <= 0.3)) {
+		return 'B';
+	}
+	else if ((rate >= 0.05 && rate <= 0.09)
+			|| (rate >= 0.31 && rate <= 0.35)) {
+		return 'C';
+	}
+	else {
+		return 'D';
+	}
+}
+char Interpreter::judge_comment_lines() {
+	double rate = (double)m_comment_lines / m_lines;
+
+	if (rate >= 0.15 && rate <= 0.25) {
+		return 'A';
+	}
+	else if ((rate >= 0.1 && rate <= 0.14)
+			|| (rate >= 0.26 && rate <= 0.3)) {
+		return 'B';
+	}
+	else if ((rate >= 0.05 && rate <= 0.09)
+			|| (rate >= 0.31 && rate <= 0.35)) {
+		return 'C';
+	}
+	else {
+		return 'D';
+	}
+}
+
+
+Interpreter::Interpreter(Parser parser) :
+	m_parser(parser), m_lines(0), m_empty_lines(0),
+	m_comment_lines(0),m_functions(0) {
+
+		m_tokenlist = m_parser.parse();
+		m_idx = 0;
+	}
+Interpreter::~Interpreter() {}
+
+
 
 void Interpreter::interprete() {
 	using std::cout;
