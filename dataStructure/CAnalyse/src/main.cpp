@@ -4,6 +4,9 @@
 
 #include <cstring>
 
+
+// #include <unistd.h>
+
 #include "../inc/Token.hpp"
 #include "../inc/Lexer.hpp"
 #include "../inc/Parser.hpp"
@@ -11,6 +14,16 @@
 
 int main (int argc, char * argv[]) {
 	using namespace std;
+
+	// char cwd[256];
+	// if (getcwd(cwd, 256)) {
+	// 	cout << "Work in path : " << cwd << endl;
+	// }
+	// else {
+	// 	cout << "Path error" << endl;
+	// 	exit(1);
+	// }
+
 
 	// ==================== Controling variables ====================
 
@@ -42,7 +55,13 @@ int main (int argc, char * argv[]) {
 	reader.open("/home/daniel/CodeProject/homework/dataStructure/CAnalyse/test.c", ios::in);
 
 	while (!reader.eof()) {
-		src += reader.get();
+		// For reading bug in linux file.
+		if (reader.peek() != (char)-1) {
+			src += reader.get();
+		}
+		else {
+			reader.ignore();
+		}
 	}
 	reader.close();
 

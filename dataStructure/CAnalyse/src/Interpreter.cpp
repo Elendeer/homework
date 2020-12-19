@@ -35,6 +35,9 @@ void Interpreter::multiple_comment() {
 			met_comment_start = true;
 			break;
 		}
+// 		else if (m_tokenlist[tmp].getType() == TokenType::END) {
+// 			break;
+// 		}
 	}
 
 	if (!met_comment_start) {
@@ -266,9 +269,11 @@ void Interpreter::printResult() {
 	using std::cout;
 	using std::endl;
 
-	cout << "Lines : " << m_lines << endl;
-	cout << "Empty lines : " << m_empty_lines << endl;
-	cout << "Comment lines : " << m_comment_lines << endl;
+	cout << "Lines : " << m_lines << "\t\t\tLevel : " << judge_lines() << endl;
+	cout << "Empty lines : " << m_empty_lines 
+		<< "\t\t\tLevel : " << judge_empty_lines()<< endl;
+	cout << "Comment lines : " << m_comment_lines
+		<< "\t\tLevel : " << judge_comment_lines()<< endl;
 	cout << "Function : " << m_functions << endl;
 }
 
