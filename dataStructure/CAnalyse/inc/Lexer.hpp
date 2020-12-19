@@ -15,7 +15,7 @@ private :
 	char m_current_char;
 
 
-	// Move the m_pos ahead and judge weather touch the end of m_text or nod.
+	// Move the m_pos ahead and judge whether touch the end of m_text or not.
 	void advance();
 
 	// Skip the white space, which means m_pos += 1.

@@ -65,12 +65,12 @@ Token Lexer::getNextToken() {
 		if (m_current_char == ' ') {
 			skipWhiteSpace();
 		}
+		else if (m_current_char == '\t') {
+			skipTab();
+		}
 		else if (m_current_char == '\n') {
 			advance();
 			return Token(TokenType::NEWLINE);
-		}
-		else if (m_current_char == '\t') {
-			advance();
 		}
 		else if (m_current_char == '/' && peek() == '/') {
 			advance();
