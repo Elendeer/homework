@@ -49,7 +49,7 @@ int main (int argc, char * argv[]) {
 		if (strcmp(argv[i],"-t") == 0) {
 			test_mod = true;
 		}
-		else if (strcmp(argv[i],"-src") == 0) {
+		else if (strcmp(argv[i],"-src") == 0 || strcmp(argv[i],"-s") == 0) {
 			src_test_mod = true;
 		}
 		else if (strcmp(argv[i],"-token") == 0) {
@@ -60,6 +60,19 @@ int main (int argc, char * argv[]) {
 
 			src_file_string = argv[i];
 			cout << "Input file : " << src_file_string << endl;
+		}
+		else if (strcmp(argv[i], "-help") == 0 || strcmp(argv[i], "-h") == 0) {
+			// TODO : show help message using AddressParser.
+			cout << "Usage: ./main [options] [file]" << endl;
+
+			cout << "Options:" << endl;
+			cout << "-s, -src\t\tshow source codes program read." << endl;
+			cout << "-token\t\tshow tokens lexer read from the source code." << endl;
+			cout << "-t\t\t\ttesting mode, does exactly the same thing as using" << endl;
+			cout << "-src -token." << endl;
+			cout << "-h, -help\t\tshow this help message and exit." << endl;
+
+			return 0;
 		}
 		else {
 			cout << "Invailid command line arguments!" << endl;
