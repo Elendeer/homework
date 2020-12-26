@@ -18,6 +18,9 @@ public:
 	// Get current working directory.
 	string getCwd() const;
 
+	// Get root directory.
+	string GNUgetRunningDiretory() const;
+
 	// Parse a relative path to a absolute path.
 	string parseRelativePath(string relative_path);
 	

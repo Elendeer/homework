@@ -1,17 +1,3 @@
-#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(NT)
-
-#include <direct.h>
-#define ADDRESS_BREAK '\\'
-
-
-#elif __linux__
-
-#include <unistd.h>
-#define ADDRESS_BREAK '/'
-
-#endif
-
-
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -30,6 +16,7 @@ int main (int argc, char * argv[]) {
 	using namespace std;
 
 	AddressParser address_parser;
+	cout << address_parser.GNUgetRunningDiretory() << endl;
 
 	string cwd_string = address_parser.getCwd();
 

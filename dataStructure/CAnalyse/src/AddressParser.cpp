@@ -31,6 +31,27 @@ string AddressParser::getCwd() const {
 	return m_current_working_directory;
 }
 
+string AddressParser::GNUgetRunningDiretory() const {
+	char buff[256];
+	int size = readlink("/proc/self/exe", buff, 255);
+
+	if (size == -1 || size > 255) {
+		std::cout << "Path reading error" << std::endl;
+		exit(1);
+	}
+
+	// buf[size] = '\0';
+	
+	for (int i = size; i >= 0; -- i) {
+		if (buff[i] == ADDRESS_BREAK) {
+			buff[i] = '\0';
+			break;
+		}
+	}
+
+	return buff;
+}
+
 string AddressParser::parseRelativePath(string relative_path) {
 	// Count num of ../
 	int up = 0;
