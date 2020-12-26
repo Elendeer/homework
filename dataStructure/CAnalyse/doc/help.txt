@@ -1,0 +1,8 @@
+Usage: csa [options] [file]
+
+Options:
+  -s, -src		show source codes program read.
+  -token		show tokens lexer read from the source code.
+  -t			testing mode, does exactly the same thing as using
+  				-src -token.
+  -h, -help		show this help message and exit.

@@ -1,17 +1,3 @@
-#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(NT)
-
-#include <direct.h>
-#define ADDRESS_BREAK '\\'
-
-
-#elif __linux__
-
-#include <unistd.h>
-#define ADDRESS_BREAK '/'
-
-#endif
-
-
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -24,18 +10,15 @@
 #include "../inc/Parser.hpp"
 #include "../inc/Interpreter.hpp"
 
+#include "../inc/AddressParser.hpp"
+
 int main (int argc, char * argv[]) {
 	using namespace std;
 
-	char cwd[256];
-	if (getcwd(cwd, 256)) {
-		cout << "Work in path : " << cwd << endl;
-	}
-	else {
-		cout << "Path error" << endl;
-		exit(1);
-	}
-	string cwd_string = cwd;
+	AddressParser address_parser;
+	cout << address_parser.GNUgetRunningDiretory() << endl;
+
+	string cwd_string = address_parser.getCwd();
 
 
 	// ==================== Controling variables ====================
@@ -49,7 +32,7 @@ int main (int argc, char * argv[]) {
 		if (strcmp(argv[i],"-t") == 0) {
 			test_mod = true;
 		}
-		else if (strcmp(argv[i],"-src") == 0) {
+		else if (strcmp(argv[i],"-src") == 0 || strcmp(argv[i],"-s") == 0) {
 			src_test_mod = true;
 		}
 		else if (strcmp(argv[i],"-token") == 0) {
@@ -60,6 +43,19 @@ int main (int argc, char * argv[]) {
 
 			src_file_string = argv[i];
 			cout << "Input file : " << src_file_string << endl;
+		}
+		else if (strcmp(argv[i], "-help") == 0 || strcmp(argv[i], "-h") == 0) {
+			// TODO : show help message using AddressParser.
+			cout << "Usage: ./main [options] [file]" << endl;
+
+			cout << "Options:" << endl;
+			cout << "-s, -src\t\tshow source codes program read." << endl;
+			cout << "-token\t\t\tshow tokens lexer read from the source code." << endl;
+			cout << "-t\t\t\ttesting mode, does exactly the same thing as using" << endl;
+			cout << "-src -token." << endl;
+			cout << "-h, -help\t\tshow this help message and exit." << endl;
+
+			return 0;
 		}
 		else {
 			cout << "Invailid command line arguments!" << endl;
@@ -77,7 +73,7 @@ int main (int argc, char * argv[]) {
 	string src;
 
 	ifstream reader;
-	reader.open(cwd_string + ADDRESS_BREAK + src_file_string, ios::in);
+	reader.open(address_parser.parseRelativePath(src_file_string), ios::in);
 
 	while (!reader.eof()) {
 		// For reading bug in linux file.
