@@ -24,18 +24,14 @@
 #include "../inc/Parser.hpp"
 #include "../inc/Interpreter.hpp"
 
+#include "../inc/AddressParser.hpp"
+
 int main (int argc, char * argv[]) {
 	using namespace std;
 
-	char cwd[256];
-	if (getcwd(cwd, 256)) {
-		cout << "Work in path : " << cwd << endl;
-	}
-	else {
-		cout << "Path error" << endl;
-		exit(1);
-	}
-	string cwd_string = cwd;
+	AddressParser address_parser;
+
+	string cwd_string = address_parser.getCwd();
 
 
 	// ==================== Controling variables ====================
@@ -67,7 +63,7 @@ int main (int argc, char * argv[]) {
 
 			cout << "Options:" << endl;
 			cout << "-s, -src\t\tshow source codes program read." << endl;
-			cout << "-token\t\tshow tokens lexer read from the source code." << endl;
+			cout << "-token\t\t\tshow tokens lexer read from the source code." << endl;
 			cout << "-t\t\t\ttesting mode, does exactly the same thing as using" << endl;
 			cout << "-src -token." << endl;
 			cout << "-h, -help\t\tshow this help message and exit." << endl;
@@ -90,7 +86,7 @@ int main (int argc, char * argv[]) {
 	string src;
 
 	ifstream reader;
-	reader.open(cwd_string + ADDRESS_BREAK + src_file_string, ios::in);
+	reader.open(address_parser.parseRelativePath(src_file_string), ios::in);
 
 	while (!reader.eof()) {
 		// For reading bug in linux file.

@@ -4,15 +4,22 @@
 #include <iostream>
 #include <string>
 
+using std::string;
+
 class AddressParser {
 private:
-	std::string m_current_working_directory;
-	std::string m_main_directory;
+	string m_current_working_directory;
+	string m_main_directory;
 
 public:
 	AddressParser();
 	~AddressParser();
 	
+	// Get current working directory.
+	string getCwd() const;
+
+	// Parse a relative path to a absolute path.
+	string parseRelativePath(string relative_path);
 	
 };
 
