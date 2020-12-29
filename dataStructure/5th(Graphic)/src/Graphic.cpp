@@ -1,11 +1,3 @@
-/*********************************************
- * @Author       : Daniel_Elendeer
- * @Date         : 2020-12-22 20:14:10
- * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-12-22 20:23:03
- * @Description  :
-*********************************************/
-
 #include "../inc/Graphic.hpp"
 #include <iostream>
 
@@ -26,7 +18,11 @@ int AdjNode::getWeight() const {
 
 Graphic::Graphic(int n) {
 	// Init adjacency list.
-	m_heads.resize(n + 1);
+	m_heads.reserve(n + 1);
+	// Appointment : -1 is null.
+	for (int i = 0; i <= n; ++ i ) {
+		m_heads.push_back({AdjNode(-1, -1)});
+	}
 }
 
 Graphic::~Graphic() {
