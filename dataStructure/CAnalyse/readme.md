@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-12-30 21:16:31
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-12-30 21:44:43
+ * @LastEditTime : 2020-12-30 22:04:08
  * @Description  :
 -->
 
@@ -21,7 +21,7 @@ because I have not test all.
 
 ## Usage
 
-```shell
+```note
 csa [options] [file || relative path of file || abslute path of file]
 
 Options:
@@ -45,6 +45,6 @@ is completely nonsense,  as I think.
 
 ## Build
 
-On GNU/Linux, use 'make'.
+On GNU/Linux, use `make`.
 
-On MSWin, use 'mingw32-make.exe', *mingw* is needed.
+On MSWin, use `mingw32-make.exe,` *mingw* is needed.
