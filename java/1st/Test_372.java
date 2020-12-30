@@ -1,6 +1,13 @@
+/*********************************************
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-10-17 15:36:22
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-12-30 22:33:29
+ * @Description  :
+*********************************************/
 import java.util.Scanner;
 
-public class Test_1 {
+public class Test_372 {
 	public static void main (String [] args) {
 		Scanner s = new Scanner(System.in);
 

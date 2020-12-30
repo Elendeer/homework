@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-12-10 22:13:53
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-12-10 23:29:34
+ * @LastEditTime : 2020-12-31 00:41:42
  * @Description  :
 *********************************************/
 
@@ -67,7 +67,7 @@ class Employee {
     }
 }
 
-public class Test_7 {
+public class Test_5177 {
     public static void main(String [] args) {
         Employee a = new Employee();
         a.printInformation();
