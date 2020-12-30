@@ -12,7 +12,7 @@ getExecDirectory.cpp FileReader.cpp isAbsPath.cpp
 endef
 
 OBJ = $(SRC:.cpp=.o)
-EXEC = main
+EXEC = csa
 
 all: $(EXEC)
 

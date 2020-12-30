@@ -1,4 +1,6 @@
-Usage: csa [options] [file]
+C-source-code Style Analyzer
+
+Usage: csa [options] file || relative path of file || abslute path of file
 
 Options:
   -s, -src		show source codes program read.
