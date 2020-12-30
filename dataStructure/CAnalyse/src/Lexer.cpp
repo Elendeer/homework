@@ -4,7 +4,7 @@
 
 void Lexer::advance() {
 	++ m_pos;
-	if (m_pos > m_text.size() - 1) {
+	if (m_pos > (int)m_text.size() - 1) {
 		m_current_char = NOCHAR;
 	}
 	else {

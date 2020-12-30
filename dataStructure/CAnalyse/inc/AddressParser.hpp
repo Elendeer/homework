@@ -1,3 +1,11 @@
+/*********************************************
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-12-30 15:50:09
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-12-30 15:55:11
+ * @Description  :
+*********************************************/
+
 #ifndef __ADDRESS_PARSER_HPP__
 #define __ADDRESS_PARSER_HPP__
 
@@ -12,16 +20,10 @@ private:
 	string m_current_working_directory;
 	string m_main_directory;
 
-	// Get directory of exe file. Only used in GNU.
-	string GNUgetExecDiretory() const;
-
-	// Get directory of exe file. Only used in MSWindows.
-	string MSWINgetRunningDiretory() const;
-
 public:
 	AddressParser();
 	~AddressParser();
-	
+
 	// Get current working directory.
 	string getCwd() const;
 
@@ -33,7 +35,7 @@ public:
 
 	// Parse a relative path to a absolute path.
 	string parseRelativePath(string relative_path);
-	
+
 };
 
 

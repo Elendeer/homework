@@ -1,3 +1,11 @@
+/*********************************************
+ * @Author       : Daniel_Elendeer
+ * @Date         : 2020-12-30 15:50:09
+ * @LastEditors  : Daniel_Elendeer
+ * @LastEditTime : 2020-12-30 16:24:47
+ * @Description  :
+*********************************************/
+
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(NT)
 
 // For getcwd(...)
@@ -14,8 +22,6 @@
 // Using different address breaking character in different platform.
 #define ADDRESS_BREAK '/'
 
-// Using different function to get exec directory in different platform.
-#define GET_ADDRESS() GNUgetExecDiretory()
 
 #endif
 
@@ -33,27 +39,6 @@ AddressParser::AddressParser() {
 	m_current_working_directory = cwd;
 }
 
-string AddressParser::GNUgetExecDiretory() const {
-	char buff[256];
-	int size = readlink("/proc/self/exe", buff, 255);
-
-	if (size == -1 || size > 255) {
-		std::cout << "Path reading error" << std::endl;
-		exit(1);
-	}
-
-	// buf[size] = '\0';
-	
-	for (int i = size; i >= 0; -- i) {
-		if (buff[i] == ADDRESS_BREAK) {
-			buff[i] = '\0';
-			break;
-		}
-	}
-
-	return buff;
-}
-
 string AddressParser::getHelpPath() const {
 	return getExecDiretory() + ADDRESS_BREAK + "doc" + ADDRESS_BREAK + "help.txt";
 }
@@ -65,9 +50,6 @@ string AddressParser::getCwd() const {
 	return m_current_working_directory;
 }
 
-string AddressParser::getExecDiretory() const {
-	return GET_ADDRESS();
-}
 
 string AddressParser::parseRelativePath(string relative_path) {
 	// Count num of ../
@@ -75,10 +57,10 @@ string AddressParser::parseRelativePath(string relative_path) {
 	// Record the index of string for cutting.
 	int idx = 0;
 
-	for (int i = 0; i < relative_path.size(); ++ i ) {
+	for (int i = 0; i < (int)relative_path.size(); ++ i ) {
 
 		// Find the relative path prefix.
-		if (i + 1 < relative_path.size()
+		if (i + 1 < (int)relative_path.size()
 			&& relative_path[i] == '.') {
 
 			// Found ./
@@ -90,12 +72,12 @@ string AddressParser::parseRelativePath(string relative_path) {
 				continue;
 			}
 			// Found ../
-			else if (i + 2 < relative_path.size()
+			else if (i + 2 < (int)relative_path.size()
 					&& relative_path[i + 1] == '.'
 					&& relative_path[i + 2] == ADDRESS_BREAK) {
 				idx = i + 2;
 				++ up;
-				
+
 				// Skip next two char
 				i += 2;
 				continue;
@@ -114,7 +96,7 @@ string AddressParser::parseRelativePath(string relative_path) {
 
 	idx = m_current_working_directory.size();
 	// Throw some suffixal path of current working directory away.
-	for (int i = m_current_working_directory.size() - 1; i >= 0 && up; -- i) {
+	for (int i = (int)m_current_working_directory.size() - 1; i >= 0 && up; -- i) {
 		if (m_current_working_directory[i] == ADDRESS_BREAK) {
 			idx = i + 1;
 			-- up;

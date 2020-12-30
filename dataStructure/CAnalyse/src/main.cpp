@@ -10,19 +10,14 @@
 #include "../inc/Parser.hpp"
 #include "../inc/Interpreter.hpp"
 
-#include "../inc/AddressParser.hpp"
+#include "../inc/FileReader.hpp"
 
 int main (int argc, char * argv[]) {
 	using namespace std;
 
-	AddressParser address_parser;
+	FileReader file_reader;
 
-	string exec_directory_string = address_parser.getExecDiretory();
-	string cwd_string = address_parser.getCwd();
-
-	cout << "exec directory : " << exec_directory_string << endl;
-	cout << "cwd : " << cwd_string << endl;
-
+	file_reader.printDir();
 
 	// ==================== Controling variables ====================
 
@@ -48,22 +43,7 @@ int main (int argc, char * argv[]) {
 			cout << "Input file : " << src_file_string << endl;
 		}
 		else if (strcmp(argv[i], "-help") == 0 || strcmp(argv[i], "-h") == 0) {
-			
-			ifstream reader;
-			reader.open(address_parser.getHelpPath(), ios::in);
-			string txt;
-
-			while (!reader.eof()) {
-				// For reading bug in linux file.
-				if (reader.peek() != (char)-1) {
-					txt += reader.get();
-				}
-				else {
-					reader.ignore();
-				}
-			}
-			reader.close();
-			cout << txt << endl;
+			cout << file_reader.readHelp() << endl;
 
 			return 0;
 		}
@@ -78,25 +58,10 @@ int main (int argc, char * argv[]) {
 		exit(1);
 	}
 
-	// ==================== Read source codes ====================
-
-	string src;
-
-	ifstream reader;
-	reader.open(address_parser.parseRelativePath(src_file_string), ios::in);
-
-	while (!reader.eof()) {
-		// For reading bug in linux file.
-		if (reader.peek() != (char)-1) {
-			src += reader.get();
-		}
-		else {
-			reader.ignore();
-		}
-	}
-	reader.close();
 
 	// ==================== Build interpreter ====================
+
+	string src = file_reader.readFile(src_file_string);
 
 	Lexer lexer(src);
 	Parser parser(lexer);
@@ -134,6 +99,6 @@ int main (int argc, char * argv[]) {
 
 	interpreter.interprete();
 	interpreter.printResult();
-	
+
 	return 0;
 }
