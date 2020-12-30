@@ -1,13 +1,21 @@
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(NT)
 
+// For getcwd(...)
 #include <direct.h>
+// Using different address breaking character in different platform.
 #define ADDRESS_BREAK '\\'
 
 
 #elif __linux__
 
+// For readlink(...) & getcwd(...)
 #include <unistd.h>
+
+// Using different address breaking character in different platform.
 #define ADDRESS_BREAK '/'
+
+// Using different function to get exec directory in different platform.
+#define GET_ADDRESS() GNUgetExecDiretory()
 
 #endif
 
@@ -25,13 +33,7 @@ AddressParser::AddressParser() {
 	m_current_working_directory = cwd;
 }
 
-AddressParser::~AddressParser() {}
-
-string AddressParser::getCwd() const {
-	return m_current_working_directory;
-}
-
-string AddressParser::GNUgetRunningDiretory() const {
+string AddressParser::GNUgetExecDiretory() const {
 	char buff[256];
 	int size = readlink("/proc/self/exe", buff, 255);
 
@@ -50,6 +52,21 @@ string AddressParser::GNUgetRunningDiretory() const {
 	}
 
 	return buff;
+}
+
+string AddressParser::getHelpPath() const {
+	return getExecDiretory() + ADDRESS_BREAK + "doc" + ADDRESS_BREAK + "help.txt";
+}
+
+
+AddressParser::~AddressParser() {}
+
+string AddressParser::getCwd() const {
+	return m_current_working_directory;
+}
+
+string AddressParser::getExecDiretory() const {
+	return GET_ADDRESS();
 }
 
 string AddressParser::parseRelativePath(string relative_path) {

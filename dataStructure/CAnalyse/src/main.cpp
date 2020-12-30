@@ -16,9 +16,12 @@ int main (int argc, char * argv[]) {
 	using namespace std;
 
 	AddressParser address_parser;
-	cout << address_parser.GNUgetRunningDiretory() << endl;
 
+	string exec_directory_string = address_parser.getExecDiretory();
 	string cwd_string = address_parser.getCwd();
+
+	cout << "exec directory : " << exec_directory_string << endl;
+	cout << "cwd : " << cwd_string << endl;
 
 
 	// ==================== Controling variables ====================
@@ -45,15 +48,22 @@ int main (int argc, char * argv[]) {
 			cout << "Input file : " << src_file_string << endl;
 		}
 		else if (strcmp(argv[i], "-help") == 0 || strcmp(argv[i], "-h") == 0) {
-			// TODO : show help message using AddressParser.
-			cout << "Usage: ./main [options] [file]" << endl;
+			
+			ifstream reader;
+			reader.open(address_parser.getHelpPath(), ios::in);
+			string txt;
 
-			cout << "Options:" << endl;
-			cout << "-s, -src\t\tshow source codes program read." << endl;
-			cout << "-token\t\t\tshow tokens lexer read from the source code." << endl;
-			cout << "-t\t\t\ttesting mode, does exactly the same thing as using" << endl;
-			cout << "-src -token." << endl;
-			cout << "-h, -help\t\tshow this help message and exit." << endl;
+			while (!reader.eof()) {
+				// For reading bug in linux file.
+				if (reader.peek() != (char)-1) {
+					txt += reader.get();
+				}
+				else {
+					reader.ignore();
+				}
+			}
+			reader.close();
+			cout << txt << endl;
 
 			return 0;
 		}
