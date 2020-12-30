@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-12-30 15:50:09
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-12-30 15:55:11
+ * @LastEditTime : 2020-12-30 20:49:00
  * @Description  :
 *********************************************/
 
@@ -20,6 +20,8 @@ private:
 	string m_current_working_directory;
 	string m_main_directory;
 
+	bool isAbsPath(string path);
+
 public:
 	AddressParser();
 	~AddressParser();
@@ -34,7 +36,7 @@ public:
 	string getHelpPath() const;
 
 	// Parse a relative path to a absolute path.
-	string parseRelativePath(string relative_path);
+	string parseRelativePath(string path);
 
 };
 

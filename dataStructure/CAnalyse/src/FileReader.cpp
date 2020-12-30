@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-12-30 15:50:09
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-12-30 20:20:54
+ * @LastEditTime : 2020-12-30 21:00:12
  * @Description  :
 *********************************************/
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(NT)
@@ -36,17 +36,18 @@ string FileReader::readFile(string path) {
     std::ifstream reader;
 	string txt;
 
+    std::cout << std::endl << m_address_parser.parseRelativePath(path) << std::endl;
+
 	reader.open(m_address_parser.parseRelativePath(path), std::ios::in);
 
     if (!reader.good()) {
         std::cout << "opening error" << std::endl;
     }
 
-    char c;
-	while (reader >> c) {
+	while (!reader.eof()) {
 		// For reading bug in linux file.
 		if (reader.peek() != (char)-1) {
-			txt += c;
+			txt += reader.get();
 		}
 		else {
 			reader.ignore();

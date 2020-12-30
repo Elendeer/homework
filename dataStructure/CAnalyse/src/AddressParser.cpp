@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-12-30 15:50:09
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-12-30 16:24:47
+ * @LastEditTime : 2020-12-30 20:50:39
  * @Description  :
 *********************************************/
 
@@ -51,20 +51,22 @@ string AddressParser::getCwd() const {
 }
 
 
-string AddressParser::parseRelativePath(string relative_path) {
+string AddressParser::parseRelativePath(string path) {
+	if (isAbsPath(path)) return path;
+
 	// Count num of ../
 	int up = 0;
 	// Record the index of string for cutting.
 	int idx = 0;
 
-	for (int i = 0; i < (int)relative_path.size(); ++ i ) {
+	for (int i = 0; i < (int)path.size(); ++ i ) {
 
 		// Find the relative path prefix.
-		if (i + 1 < (int)relative_path.size()
-			&& relative_path[i] == '.') {
+		if (i + 1 < (int)path.size()
+			&& path[i] == '.') {
 
 			// Found ./
-			if (relative_path[i + 1] == ADDRESS_BREAK) {
+			if (path[i + 1] == ADDRESS_BREAK) {
 				idx = i + 1;
 
 				// Skip next char
@@ -72,9 +74,9 @@ string AddressParser::parseRelativePath(string relative_path) {
 				continue;
 			}
 			// Found ../
-			else if (i + 2 < (int)relative_path.size()
-					&& relative_path[i + 1] == '.'
-					&& relative_path[i + 2] == ADDRESS_BREAK) {
+			else if (i + 2 < (int)path.size()
+					&& path[i + 1] == '.'
+					&& path[i + 2] == ADDRESS_BREAK) {
 				idx = i + 2;
 				++ up;
 
@@ -92,7 +94,7 @@ string AddressParser::parseRelativePath(string relative_path) {
 		}
 	}
 
-	string sub_rela_string = relative_path.substr(idx);
+	string sub_rela_string = path.substr(idx);
 
 	idx = m_current_working_directory.size();
 	// Throw some suffixal path of current working directory away.
