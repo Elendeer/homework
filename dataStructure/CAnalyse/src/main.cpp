@@ -21,6 +21,7 @@ int main (int argc, char * argv[]) {
 	bool test_mod = false;
 	bool src_test_mod = false;
 	bool token_test_mod = false;
+	// bool dir_mode = false;
 	string src_file_string;
 
 	for (int i = 1; i < argc; ++ i ) {
@@ -41,12 +42,16 @@ int main (int argc, char * argv[]) {
 		}
 		else if (strcmp(argv[i], "-help") == 0 || strcmp(argv[i], "-h") == 0) {
 			cout << file_reader.readHelp() << endl;
-
 			return 0;
 		}
 		else if (strcmp(argv[i], "-path") == 0 || strcmp(argv[i], "-p") == 0) {
 			file_reader.printDir();
 			cout << "========== ========== ==========" << endl;
+		}
+		else if (file_reader.isDir(argv[i])) {
+			cout << "Your input is a dir" << endl;
+			// dir_mode = true;
+			return 0;
 		}
 		else {
 			cout << "Invailid command line arguments!" << endl;
@@ -62,7 +67,15 @@ int main (int argc, char * argv[]) {
 
 	// ==================== Build interpreter ====================
 
-	string src = file_reader.readFile(src_file_string);
+	string src;
+
+	try {
+		src = file_reader.readFile(src_file_string);
+	}
+	catch (string info) {
+		cout << info << endl;
+		exit(1);
+	}
 
 	Lexer lexer(src);
 	Parser parser(lexer);

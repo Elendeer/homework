@@ -13,7 +13,8 @@ endif
 
 SRC = Token.cpp Lexer.cpp Parser.cpp \
 Interpreter.cpp main.cpp AddressParser.cpp \
-getExecDirectory.cpp FileReader.cpp isAbsPath.cpp \
+getExecDirectory.cpp FileReader.cpp\
+isAbsPath.cpp isDir.cpp\
 
 OBJ = $(SRC:.cpp=.o)
 EXEC = csa

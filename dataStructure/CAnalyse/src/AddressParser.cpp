@@ -19,6 +19,7 @@
 // For readlink(...) & getcwd(...)
 #include <unistd.h>
 
+
 // Using different address breaking character in different platform.
 #define ADDRESS_BREAK '/'
 

@@ -26,10 +26,14 @@ public :
 
     // Return a string containing contents of input file.
     // path sould point to file.
+	// Throw a exception if opening error is met.
     string readFile(string path);
 
     // Print the cwd and directory of exe file.
     void printDir() const;
+
+	// Return true if path is not pointing to a file but a directory.
+	bool isDir(string path);
 };
 
 #endif

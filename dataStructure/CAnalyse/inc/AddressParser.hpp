@@ -38,6 +38,8 @@ public:
 	// Parse a relative path to a absolute path.
 	string parseRelativePath(string path);
 
+	// Return true if path is not pointing to a file but a directory.
+	bool isDir(string path);
 };
 
 

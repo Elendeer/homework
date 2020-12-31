@@ -22,6 +22,7 @@
 #include "../inc/FileReader.hpp"
 
 
+
 FileReader::FileReader() {}
 FileReader::~FileReader() {}
 
@@ -39,7 +40,8 @@ string FileReader::readFile(string path) {
 	reader.open(m_address_parser.parseRelativePath(path), std::ios::in);
 
     if (!reader.good()) {
-        std::cout << "opening error" << std::endl;
+
+		throw (string)"opening error";
     }
 
 	while (!reader.eof()) {
@@ -65,4 +67,10 @@ void FileReader::printDir() const {
 
 	cout << "exec directory : " << exec_directory_string << endl;
 	cout << "cwd : " << cwd_string << endl;
+}
+
+bool FileReader::isDir(string path) {
+	string abs_path = m_address_parser.parseRelativePath(path);
+
+	return m_address_parser.isDir(abs_path);
 }
