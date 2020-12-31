@@ -16,9 +16,6 @@ int main (int argc, char * argv[]) {
 	using namespace std;
 
 	FileReader file_reader;
-
-	file_reader.printDir();
-
 	// ==================== Controling variables ====================
 
 	bool test_mod = false;
@@ -46,6 +43,10 @@ int main (int argc, char * argv[]) {
 			cout << file_reader.readHelp() << endl;
 
 			return 0;
+		}
+		else if (strcmp(argv[i], "-path") == 0 || strcmp(argv[i], "-p") == 0) {
+			file_reader.printDir();
+			cout << "========== ========== ==========" << endl;
 		}
 		else {
 			cout << "Invailid command line arguments!" << endl;

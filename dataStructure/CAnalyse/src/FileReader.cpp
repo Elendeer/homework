@@ -36,8 +36,6 @@ string FileReader::readFile(string path) {
     std::ifstream reader;
 	string txt;
 
-    std::cout << std::endl << m_address_parser.parseRelativePath(path) << std::endl;
-
 	reader.open(m_address_parser.parseRelativePath(path), std::ios::in);
 
     if (!reader.good()) {

@@ -1,10 +1,16 @@
+
 C-source-code Style Analyzer
 
 Usage: csa [options] file || relative path of file || abslute path of file
 
 Options:
   -s, -src		show source codes program read.
+
   -token		show tokens lexer read from the source code.
+
   -t			testing mode, does exactly the same thing as using
   				-src -token.
+
+  -p, -path		show current working directory and exe file directory.
+
   -h, -help		show this help message and exit.

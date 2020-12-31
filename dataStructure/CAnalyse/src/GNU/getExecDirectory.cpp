@@ -11,6 +11,8 @@
 // Using different address breaking character in different platform.
 #define ADDRESS_BREAK '/'
 
+// For readlink(...)
+#include <unistd.h>
 
 #include "../../inc/AddressParser.hpp"
 

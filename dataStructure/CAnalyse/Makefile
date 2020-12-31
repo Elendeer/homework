@@ -2,14 +2,18 @@ CXX = g++
 CXXFLAGS = -Wall -Werror -Wextra -pedantic -std=c++17 -g
 
 vpath  %.cpp src
-vpath  %.cpp src/win
-vpath  %.cpp src/GNU
 
-define SRC
-Token.cpp Lexer.cpp Parser.cpp
-Interpreter.cpp main.cpp AddressParser.cpp
-getExecDirectory.cpp FileReader.cpp isAbsPath.cpp
-endef
+UNAME = $(shell uname)
+
+ifeq ($(UNAME), Linux)
+vpath  %.cpp src/GNU
+else
+vpath  %.cpp src/win
+endif
+
+SRC = Token.cpp Lexer.cpp Parser.cpp \
+Interpreter.cpp main.cpp AddressParser.cpp \
+getExecDirectory.cpp FileReader.cpp isAbsPath.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 EXEC = csa
