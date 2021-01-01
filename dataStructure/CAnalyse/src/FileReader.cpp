@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-12-30 15:50:09
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-12-30 21:00:12
+ * @LastEditTime : 2021-01-01 15:17:09
  * @Description  :
 *********************************************/
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(NT)
@@ -20,24 +20,26 @@
 #endif
 
 #include "../inc/FileReader.hpp"
+#include <iostream>
 
 
+using std::string;
 
 FileReader::FileReader() {}
 FileReader::~FileReader() {}
 
-string FileReader::readHelp() {
-    string help_path = m_address_parser.getExecDiretory() +
-         ADDRESS_BREAK + "doc" + ADDRESS_BREAK + "help.txt";
+// string FileReader::readHelp() {
+//     string help_path = m_address_parser.getExecDiretory() +
+//          ADDRESS_BREAK + "doc" + ADDRESS_BREAK + "help.txt";
 
-    return readFile(help_path);
-}
+//     return readFile(help_path);
+// }
 
-string FileReader::readFile(string path) {
+string FileReader::readFile(string abs_path) {
     std::ifstream reader;
 	string txt;
 
-	reader.open(m_address_parser.parseRelativePath(path), std::ios::in);
+	reader.open(abs_path, std::ios::in);
 
     if (!reader.good()) {
 
@@ -56,21 +58,4 @@ string FileReader::readFile(string path) {
 	reader.close();
 
     return txt;
-}
-
-void FileReader::printDir() const {
-    using std::cout;
-    using std::endl;
-
-	string exec_directory_string = m_address_parser.getExecDiretory();
-	string cwd_string = m_address_parser.getCwd();
-
-	cout << "exec directory : " << exec_directory_string << endl;
-	cout << "cwd : " << cwd_string << endl;
-}
-
-bool FileReader::isDir(string path) {
-	string abs_path = m_address_parser.parseRelativePath(path);
-
-	return m_address_parser.isDir(abs_path);
 }

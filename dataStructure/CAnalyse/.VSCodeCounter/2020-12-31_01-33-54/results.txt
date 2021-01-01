@@ -1,0 +1,53 @@
+Date : 2020-12-31 01:33:54
+Directory : d:\CodeProject\homework\dataStructure\CAnalyse
+Total : 22 files,  826 codes, 136 comments, 296 blanks, all 1258 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C++      |         17 |        753 |        117 |        261 |      1,131 |
+| Markdown |          2 |         40 |         14 |         20 |         74 |
+| Makefile |          1 |         17 |          0 |          6 |         23 |
+| C        |          2 |         16 |          5 |          9 |         30 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                        | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                           |         22 |        826 |        136 |        296 |      1,258 |
+| inc                                                                         |          6 |        120 |         34 |         69 |        223 |
+| src                                                                         |         11 |        633 |         83 |        192 |        908 |
+| src\GNU                                                                     |          2 |         28 |         16 |         18 |         62 |
+| src\win                                                                     |          2 |         30 |         16 |         14 |         60 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                    | language | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| d:\CodeProject\homework\dataStructure\CAnalyse\Makefile                     | Makefile |         17 |          0 |          6 |         23 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\concept.md                   | Markdown |         10 |          7 |          6 |         23 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\inc\AddressParser.hpp        | C++      |         19 |         11 |         15 |         45 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\inc\FileReader.hpp           | C++      |         15 |         11 |         10 |         36 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\inc\Interpreter.hpp          | C++      |         24 |          0 |          9 |         33 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\inc\Lexer.hpp                | C++      |         22 |          8 |         14 |         44 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\inc\Parser.hpp               | C++      |         15 |          2 |          8 |         25 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\inc\Token.hpp                | C++      |         25 |          2 |         13 |         40 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\readme.md                    | Markdown |         30 |          7 |         14 |         51 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\src\AddressParser.cpp        | C++      |         64 |         21 |         33 |        118 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\src\FileReader.cpp           | C++      |         40 |         10 |         20 |         70 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\src\GNU\getExecDirectory.cpp | C++      |         19 |          9 |         12 |         40 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\src\GNU\isAbsPath.cpp        | C++      |          9 |          7 |          6 |         22 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\src\Interpreter.cpp          | C++      |        224 |         10 |         46 |        280 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\src\Lexer.cpp                | C++      |         98 |          5 |         15 |        118 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\src\Parser.cpp               | C++      |         26 |          1 |         16 |         43 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\src\Token.cpp                | C++      |         46 |          0 |          6 |         52 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\src\main.cpp                 | C++      |         77 |          4 |         24 |        105 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\src\win\getExecDirectory.cpp | C++      |         20 |          9 |         10 |         39 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\src\win\isAbsPath.cpp        | C++      |         10 |          7 |          4 |         21 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\test.c                       | C        |          1 |          0 |          0 |          1 |
+| d:\CodeProject\homework\dataStructure\CAnalyse\test2.c                      | C        |         15 |          5 |          9 |         29 |
+| Total                                                                       |          |        826 |        136 |        296 |      1,258 |
++-----------------------------------------------------------------------------+----------+------------+------------+------------+------------+

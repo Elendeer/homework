@@ -2,7 +2,12 @@
 
 #include "../../inc/AddressParser.hpp"
 
-bool AddressParser::isDir() {
+#include <direct.h>
+#include <vector>
+#include <io.h>
+
+bool AddressParser::isDir(string path) {
+
 	return false;
 }
 

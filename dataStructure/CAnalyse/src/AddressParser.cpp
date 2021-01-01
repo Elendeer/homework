@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-12-30 15:50:09
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-12-30 20:50:39
+ * @LastEditTime : 2021-01-01 14:53:34
  * @Description  :
 *********************************************/
 
@@ -43,6 +43,7 @@ AddressParser::AddressParser() {
 string AddressParser::getHelpPath() const {
 	return getExecDiretory() + ADDRESS_BREAK + "doc" + ADDRESS_BREAK + "help.txt";
 }
+
 
 
 AddressParser::~AddressParser() {}
@@ -115,4 +116,9 @@ string AddressParser::parseRelativePath(string path) {
 	// std::cout << sub_cwd_string << std::endl;
 
 	return sub_cwd_string + sub_rela_string;
+}
+
+bool AddressParser::isDir(string path) {
+	if (path.back() == ADDRESS_BREAK) return true;
+	return false;
 }
