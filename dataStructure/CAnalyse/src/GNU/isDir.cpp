@@ -2,19 +2,18 @@
 
 #include "../../inc/AddressParser.hpp"
 
-// For opendir(...)
-#include <sys/types.h>
-#include <dirent.h>
+// For struct stat and stat(...).
+#include <sys/stat.h>
 
 bool AddressParser::isDir(string path) {
+	struct stat file_stat;
 
-	// DIR * p_dir = opendir(path.c_str());
-	// if (p_dir == NULL) {
-	// 	return false;
-	// }
+	if ((stat(path.c_str(), &file_stat) == 0)
+			&& (file_stat.st_mode & S_IFDIR)) {
+		return true;
+	}
 
-	// closedir(p_dir);
-	// return true;
+	return false;
 }
 
 #endif

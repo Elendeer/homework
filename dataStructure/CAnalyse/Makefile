@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -Werror -Wextra -pedantic -std=c++17 -g
+CXXFLAGS = -Wall -Werror -Wextra -pedantic -std=c++11 -g
 
 vpath  %.cpp src
 

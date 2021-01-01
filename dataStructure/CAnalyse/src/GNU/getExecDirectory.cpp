@@ -16,6 +16,8 @@
 
 #include "../../inc/AddressParser.hpp"
 
+using std::string;
+
 string AddressParser::getExecDiretory() const {
 	char buff[256];
 	int size = readlink("/proc/self/exe", buff, 255);

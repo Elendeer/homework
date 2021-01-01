@@ -5,6 +5,20 @@
  * @LastEditTime : 2021-01-01 18:25:45
  * @Description  :
 *********************************************/
+
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(NT)
+
+// Using different address breaking character in different platform.
+#define ADDRESS_BREAK '\\'
+
+#elif __linux__
+
+// Using different address breaking character in different platform.
+#define ADDRESS_BREAK '/'
+
+#endif
+
+
 #include "../inc/Analyzer.hpp"
 
 #include <cstring>
@@ -82,14 +96,17 @@ void Analyzer::dirMode(string dir_path) {
     vector<string> sub_paths = m_address_parser.getSubPaths(path);
 
     for (auto s : sub_paths) {
-        string abs_path = path + s;
+		// Add a address break after a path to make it a directory.
+        string abs_path = path + s + ADDRESS_BREAK;
 
         if (m_address_parser.isDir(abs_path)) {
             dirMode(abs_path);
         }
-        else if (abs_path.back() == 'c' &&
-        abs_path.at(abs_path.size() - 2) == '.') {
-            fileMode(abs_path);
+		// If it's not a diretory, may make a mistake like :
+		// */test.c/
+        else if (abs_path.at(abs_path.size() - 3) == '.' &&
+        abs_path.at(abs_path.size() - 2) == 'c') {
+            fileMode(abs_path.substr(0, abs_path.size() - 1));
         }
         else {
             continue;
