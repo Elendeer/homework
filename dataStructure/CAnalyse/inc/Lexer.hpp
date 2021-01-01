@@ -14,6 +14,12 @@ private :
 
 	char m_current_char;
 
+	// For skip any strange word that may exist in comment.
+	bool m_in_comment;
+	// For skip any strange word that may exist
+	// in multi comment.
+	bool m_in_multi_comment;
+
 
 	// Move the m_pos ahead and judge whether touch the end of m_text or not.
 	void advance();
@@ -31,6 +37,9 @@ private :
 
 	// Read any string.
 	void anyString();
+
+	// Read any char.
+	void anyChar();
 
 public :
 	Lexer(std::string text);

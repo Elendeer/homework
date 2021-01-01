@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-12-30 15:55:52
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-12-30 16:57:30
+ * @LastEditTime : 2021-01-01 21:25:49
  * @Description  :
 *********************************************/
 
@@ -14,6 +14,8 @@
 #include <windows.h>
 
 #include "../../inc/AddressParser.hpp"
+
+using std::string;
 
 string AddressParser::getExecDiretory() const {
     TCHAR buff[256];

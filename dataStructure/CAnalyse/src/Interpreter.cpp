@@ -86,8 +86,8 @@ void Interpreter::function() {
 	advance();
 	type = m_tokenlist[m_idx].getType();
 
-	// It's just a declaration if the type of next char is not {
-	if (type == TokenType::ANY) {
+	// It's just a declaration or macro if the type of next char is not {
+	if (type != TokenType::RBRACE) {
 		return;
 	}
 	else {
@@ -270,7 +270,7 @@ void Interpreter::printResult() {
 	using std::endl;
 
 	cout << "Lines : " << m_lines << "\t\t\tLevel : " << judge_lines() << endl;
-	cout << "Empty lines : " << m_empty_lines 
+	cout << "Empty lines : " << m_empty_lines
 		<< "\t\t\tLevel : " << judge_empty_lines()<< endl;
 	cout << "Comment lines : " << m_comment_lines
 		<< "\t\tLevel : " << judge_comment_lines()<< endl;

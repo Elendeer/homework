@@ -18,7 +18,7 @@ void Parser::advance() {
 
 
 Parser::Parser(Lexer lexer) : m_lexer(lexer) {
-	m_current_token = m_lexer.getNextToken();
+	// m_current_token = m_lexer.getNextToken();
 }
 
 Parser::~Parser() {}
