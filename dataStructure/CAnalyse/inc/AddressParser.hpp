@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-12-30 15:50:09
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2020-12-30 20:49:00
+ * @LastEditTime : 2021-01-01 16:49:21
  * @Description  :
 *********************************************/
 
@@ -11,11 +11,12 @@
 
 #include <iostream>
 #include <string>
-
-using std::string;
+#include <vector>
 
 
 class AddressParser {
+	using string = std::string;
+
 private:
 	string m_current_working_directory;
 	string m_main_directory;
@@ -40,6 +41,9 @@ public:
 
 	// Return true if path is not pointing to a file but a directory.
 	bool isDir(string path);
+
+	// Get sub paths of a directory.
+	std::vector<string> getSubPaths(string dir_path);
 };
 
 

@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-12-30 15:50:09
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2021-01-01 14:53:34
+ * @LastEditTime : 2021-01-01 17:12:31
  * @Description  :
 *********************************************/
 
@@ -28,14 +28,14 @@
 
 #include "../inc/AddressParser.hpp"
 
+using std::string;
 
 AddressParser::AddressParser() {
 	using namespace std;
 
 	char cwd[256];
 	if (getcwd(cwd, 256) == NULL) {
-		cout << "Path error" << endl;
-		exit(1);
+		throw (string)"getcwd error";
 	}
 	m_current_working_directory = cwd;
 }
@@ -116,9 +116,4 @@ string AddressParser::parseRelativePath(string path) {
 	// std::cout << sub_cwd_string << std::endl;
 
 	return sub_cwd_string + sub_rela_string;
-}
-
-bool AddressParser::isDir(string path) {
-	if (path.back() == ADDRESS_BREAK) return true;
-	return false;
 }

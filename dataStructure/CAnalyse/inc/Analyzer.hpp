@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2021-01-01 14:55:26
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2021-01-01 15:46:21
+ * @LastEditTime : 2021-01-01 18:00:37
  * @Description  :
 *********************************************/
 
@@ -17,6 +17,7 @@
 #include "Controller.hpp"
 
 class Analyzer {
+    using string = std::string;
 private:
     // Interpreter* m_interpreter;
     AddressParser m_address_parser;
@@ -24,6 +25,10 @@ private:
     Controller m_controller;
 
     std::string m_analyzing_path;
+
+    // Absolute path is needed.
+    void fileMode(string file_path);
+    void dirMode(string dir_path);
 
 public:
     Analyzer();

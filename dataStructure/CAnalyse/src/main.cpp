@@ -6,9 +6,8 @@ int main (int argc, char * argv[]) {
 	using namespace std;
 	Analyzer analyzer;
 
-	analyzer.readComArgs(argc, argv);
-
 	try {
+		analyzer.readComArgs(argc, argv);
 		analyzer.analyze();
 	}
 	catch (string info) {

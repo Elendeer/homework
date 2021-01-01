@@ -2,11 +2,15 @@
 
 #include "../../inc/AddressParser.hpp"
 
-#include <direct.h>
-#include <vector>
-#include <io.h>
+#include <sys/stat.h>
 
-bool AddressParser::isDir(string path) {
+bool AddressParser::isDir(string path)
+{
+
+	struct _stat file_stat;
+	if ((_stat(path.c_str(), &file_stat) == 0) && (file_stat.st_mode & _S_IFDIR)) {
+		return true;
+	}
 
 	return false;
 }
