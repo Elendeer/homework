@@ -86,8 +86,20 @@ void Interpreter::function() {
 	advance();
 	type = m_tokenlist[m_idx].getType();
 
+	// Find next type and skip NEWLINE.
+	// Handel things like:
+	// int main()
+	// {
+	// }
+	int i;
+	for (i = 0; m_tokenlist[m_idx + i].getType() == TokenType::NEWLINE; ++ i ) {
+		++ m_lines;
+		continue;
+	}
+	type = m_tokenlist[m_idx + i].getType();
+
 	// It's just a declaration or macro if the type of next char is not {
-	if (type != TokenType::RBRACE) {
+	if (type != TokenType::LBRACE) {
 		return;
 	}
 	else {
