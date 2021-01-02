@@ -7,7 +7,7 @@ using namespace std;
 const int N = 1e5 + 10;
 int q[N];
 
-void quick_sort(int l, int r, int q[]) {
+void quick_sort(int q[], int l, int r) {
 	if (l >= r) return ;
 
 	int i = l - 1, j = r + 1, x = q[(l + r) >> 1];
@@ -21,8 +21,8 @@ void quick_sort(int l, int r, int q[]) {
 		}
 	}
 
-	quick_sort(l, j, q);
-	quick_sort(j + 1, r, q);
+	quick_sort(q, l, j);
+	quick_sort(q, j + 1, r);
 }
 
 int main() {
@@ -32,11 +32,11 @@ int main() {
 		scanf("%d", &q[i]);
 	}
 
-	quick_sort(0, n - 1, q);
+	quick_sort(q, 0, n - 1);
 
 	for (int i = 0; i < n; ++ i ) {
 		cout << q[i] << " ";
 	}
-	
+
 	return 0;
 }
