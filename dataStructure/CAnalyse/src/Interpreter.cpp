@@ -91,12 +91,21 @@ void Interpreter::function() {
 	// int main()
 	// {
 	// }
-	int i;
-	for (i = 0; m_tokenlist[m_idx + i].getType() == TokenType::NEWLINE; ++ i ) {
+	while (type == TokenType::NEWLINE) {
 		++ m_lines;
-		continue;
+
+		// Handel things like:
+		// int main()
+		//
+		// {
+		// }
+		if (m_idx && m_tokenlist[m_idx - 1].getType() == TokenType::NEWLINE) {
+			++ m_empty_lines;
+		}
+
+		advance();
+		type = m_tokenlist[m_idx].getType();
 	}
-	type = m_tokenlist[m_idx + i].getType();
 
 	// It's just a declaration or macro if the type of next char is not {
 	if (type != TokenType::LBRACE) {
