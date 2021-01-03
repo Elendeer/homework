@@ -8,7 +8,7 @@ TokenType Interpreter::peekType() const {
 	return m_tokenlist[m_idx + 1].getType();
 }
 
-void Interpreter::multiple_comment() {
+void Interpreter::multipleComment() {
 	TokenType type = m_tokenlist[m_idx].getType();
 	while (type != TokenType::COMMENT_END) {
 
@@ -73,7 +73,7 @@ void Interpreter::function() {
 		}
 		else if (type == TokenType::COMMENT_START) {
 			advance();
-			multiple_comment();
+			multipleComment();
 		}
 		else {
 			advance();
@@ -122,7 +122,7 @@ void Interpreter::function() {
 			}
 			else if (type == TokenType::COMMENT_START) {
 				advance();
-				multiple_comment();
+				multipleComment();
 			}
 			else {
 				advance();
@@ -135,23 +135,25 @@ void Interpreter::function() {
 	++ m_functions;
 }
 
-char Interpreter::judge_lines() {
-	if (m_lines >= 10 && m_lines <= 15) {
+char Interpreter::judgeFuncAver() {
+	double aver = (double)m_lines / m_functions;
+
+	if (aver >= 10 && aver <= 15) {
 		return 'A';
 	}
-	else if ((m_lines >= 8 && m_lines <= 9)
-			|| (m_lines >= 16 && m_lines <= 20)) {
+	else if ((aver >= 8 && aver <= 9)
+			|| (aver >= 16 && aver <= 20)) {
 		return 'B';
 	}
-	else if ((m_lines >= 5 && m_lines <= 7)
-			|| (m_lines >= 21 && m_lines <= 24)) {
+	else if ((aver >= 5 && aver <= 7)
+			|| (aver >= 21 && aver <= 24)) {
 		return 'C';
 	}
 	else {
 		return 'D';
 	}
 }
-char Interpreter::judge_empty_lines() {
+char Interpreter::judgeEmptyLines() {
 	double rate = (double)m_empty_lines / m_lines;
 
 	if (rate >= 0.15 && rate <= 0.25) {
@@ -169,7 +171,7 @@ char Interpreter::judge_empty_lines() {
 		return 'D';
 	}
 }
-char Interpreter::judge_comment_lines() {
+char Interpreter::judgeCommentLines() {
 	double rate = (double)m_comment_lines / m_lines;
 
 	if (rate >= 0.15 && rate <= 0.25) {
@@ -234,7 +236,7 @@ void Interpreter::interprete() {
 		}
 		else if (type == TokenType::COMMENT_START) {
 			advance();
-			multiple_comment();
+			multipleComment();
 		}
 		else if (type == TokenType::ANY) {
 			if (peekType() == TokenType::ANY) {
@@ -259,6 +261,8 @@ void Interpreter::interprete() {
 
 		type = m_tokenlist[m_idx].getType();
 	}
+
+
 }
 
 void Interpreter::printTokens() {
@@ -281,11 +285,17 @@ void Interpreter::printResult() {
 	using std::cout;
 	using std::endl;
 
-	cout << "Lines : " << m_lines << "\t\t\tLevel : " << judge_lines() << endl;
+	cout << "Total Lines : " << m_lines << endl;
+	cout << "Total Functions : " << m_functions << endl;
+
+	cout << "Style Assessment: " << endl;
+	cout << "Average length of function : "
+		<< (double)m_lines / m_functions
+		<< "\t\tLevel : " << judgeFuncAver() << endl;
+
 	cout << "Empty lines : " << m_empty_lines
-		<< "\t\t\tLevel : " << judge_empty_lines()<< endl;
+		<< "\t\t\tLevel : " << judgeEmptyLines()<< endl;
 	cout << "Comment lines : " << m_comment_lines
-		<< "\t\tLevel : " << judge_comment_lines()<< endl;
-	cout << "Function : " << m_functions << endl;
+		<< "\t\tLevel : " << judgeCommentLines()<< endl;
 }
 

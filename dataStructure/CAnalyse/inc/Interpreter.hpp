@@ -6,19 +6,21 @@
 class Interpreter {
 private:
 	Parser m_parser;
+
 	int m_lines, m_empty_lines, m_comment_lines, m_functions;
+
 	std::vector<Token> m_tokenlist;
 	int m_idx;
 
 	void advance();
 	TokenType peekType() const;
 
-	void multiple_comment();
+	void multipleComment();
 	void function();
 
-	char judge_lines();
-	char judge_empty_lines();
-	char judge_comment_lines();
+	char judgeFuncAver();
+	char judgeEmptyLines();
+	char judgeCommentLines();
 
 public:
 	Interpreter(Parser parser);
