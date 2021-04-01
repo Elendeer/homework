@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2021-01-02 21:05:18
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2021-01-02 22:32:29
+ * @LastEditTime : 2021-01-02 23:49:42
  * @Description  :
 *********************************************/
 #include <iostream>
@@ -34,7 +34,7 @@ void radix_sort() {
 
         // 遍历所有桶，取数放入原来的数组中
         int j = 0;
-        for (int i = 0; i < 15; ++ i ) {
+        for (int i = 0; i < 16; ++ i ) {
             for (int k = h[i]; k != -1; k = ne[k] ) {
                 s[++ s_idx] = e[k];
             }

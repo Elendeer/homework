@@ -2,9 +2,10 @@ int main()
 
 {
     printf("Hello");
-    int a; while (1)
+    int a; for (;;)
     {
         break;
     }
+    /**/ /**/
     return 0;
 }

@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-12-10 23:43:49
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2021-01-03 13:41:37
+ * @LastEditTime : 2021-01-03 15:15:29
  * @Description  :
 -->
 
@@ -32,3 +32,11 @@ Command line arguments:
 | `}` | 右花括号 |
 | `efo` | 文件结束 |
 | 其他 | 其他 |
+
+```note
+当前字符为/
+    若下一个字符为/
+        识别到注释词汇
+    否则
+        其他
+```

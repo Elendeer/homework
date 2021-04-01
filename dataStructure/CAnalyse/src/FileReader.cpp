@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-12-30 15:50:09
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2021-01-01 15:17:09
+ * @LastEditTime : 2021-01-03 20:13:54
  * @Description  :
 *********************************************/
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(NT)
@@ -27,13 +27,6 @@ using std::string;
 
 FileReader::FileReader() {}
 FileReader::~FileReader() {}
-
-// string FileReader::readHelp() {
-//     string help_path = m_address_parser.getExecDiretory() +
-//          ADDRESS_BREAK + "doc" + ADDRESS_BREAK + "help.txt";
-
-//     return readFile(help_path);
-// }
 
 string FileReader::readFile(string abs_path) {
     std::ifstream reader;

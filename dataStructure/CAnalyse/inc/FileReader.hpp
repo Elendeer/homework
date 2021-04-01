@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2020-12-30 15:50:09
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2021-01-01 15:54:01
+ * @LastEditTime : 2021-01-03 20:14:22
  * @Description  :
 *********************************************/
 
@@ -14,14 +14,10 @@
 
 class FileReader {
 private :
-    // string m_exec_path;
 
 public :
     FileReader();
     ~FileReader();
-
-    // Return a string containing contents of doc/help.txt.
-    // string readHelp();
 
     // Return a string containing contents of input file.
     // path sould point to file.
