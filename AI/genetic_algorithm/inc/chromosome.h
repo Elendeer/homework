@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2021-04-02 09:22:20
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2021-04-05 16:21:01
+ * @LastEditTime : 2021-04-11 16:57:10
  * @Description  :
 *********************************************/
 
@@ -45,6 +45,9 @@ public :
     void setFit(double rate);
 
     void print();
+
+    void writeX1(std::ofstream & output_file);
+    void writeX2(std::ofstream & output_file);
 };
 
 #endif

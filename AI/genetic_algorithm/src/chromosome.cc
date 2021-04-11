@@ -2,10 +2,11 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2021-04-02 09:23:49
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2021-04-05 16:36:09
+ * @LastEditTime : 2021-04-11 16:57:42
  * @Description  :
 *********************************************/
 #include <iostream>
+#include <fstream>
 #include <ctime>
 #include <cmath>
 
@@ -85,4 +86,11 @@ void Chromosome::print() {
     using std::endl;
     cout << "x1: " << _x1 << "\tx2: " << _x2 << endl;
     cout << "fit: " << _fit << endl;
+}
+
+void Chromosome::writeX1(std::ofstream & output_file) {
+    output_file << _x1;
+}
+void Chromosome::writeX2(std::ofstream & output_file) {
+    output_file << _x2;
 }

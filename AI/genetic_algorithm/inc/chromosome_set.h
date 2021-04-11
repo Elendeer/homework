@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2021-04-04 08:48:23
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2021-04-05 16:50:44
+ * @LastEditTime : 2021-04-11 16:46:56
  * @Description  :
 *********************************************/
 
@@ -30,6 +30,9 @@ public:
     void generate(int num);
 
     void print(long long unsigned int num = 20);
+
+    // Write the answer into a file.
+    void write(std::string file_name);
 };
 
 #endif

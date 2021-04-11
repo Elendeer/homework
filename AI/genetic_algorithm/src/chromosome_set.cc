@@ -2,7 +2,7 @@
  * @Author       : Daniel_Elendeer
  * @Date         : 2021-04-04 08:48:23
  * @LastEditors  : Daniel_Elendeer
- * @LastEditTime : 2021-04-05 17:12:03
+ * @LastEditTime : 2021-04-11 16:58:42
  * @Description  :
 *********************************************/
 #include <ctime>
@@ -10,6 +10,7 @@
 #include <algorithm>
 
 #include <iostream>
+#include <fstream>
 
 #include "../inc/chromosome_set.h"
 
@@ -129,4 +130,23 @@ void ChromosomeSet::print(long long unsigned int num) {
             _set.at(i).print();
         }
     }
+}
+
+void ChromosomeSet::write(std::string file_name) {
+    std::ofstream output_file;
+    output_file.open(file_name, std::ios::out | std::ios::trunc);
+
+    output_file << "vector X1:"<< endl;
+    for (Chromosome c : _set) {
+        c.writeX1(output_file);
+        output_file << endl;
+    }
+    output_file << endl;
+    output_file << "vector X2:"<< endl;
+    for (Chromosome c : _set) {
+        c.writeX2(output_file);
+        output_file << endl;
+    }
+
+    output_file.close();
 }
