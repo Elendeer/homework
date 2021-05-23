@@ -38,7 +38,7 @@ bool ifSave() {
 		work[i] = available[i];
 	}
 	bool finish[5] = {false};
-	
+
 	bool all_true = false;
 	int idx = 0;
 	while (!all_true) {
@@ -58,11 +58,10 @@ bool ifSave() {
 					break;
 				}
 			}
-		
-				
+
 			if (flag) break;
-		}	
-	
+		}
+
 		if (flag) {
 			for (int j = 0; j < 3; ++ j ) {
 				work[j] += allocation[ii][j];
@@ -73,7 +72,7 @@ bool ifSave() {
 		else {
 			return false;
 		}
-		
+
 		all_true = true;
 		for (int i = 0; i < 5; ++ i ) {
 			if (finish[i] == false) {
@@ -81,10 +80,10 @@ bool ifSave() {
 				break;
 			}
 		}
-		
+
 		++ idx;
 	}
-	
+
 	return true;
 }
 
@@ -95,22 +94,22 @@ void bankerAlgorithm(int process_no, int request[3]) {
 			return ;
 		}
 	}
-	
+
 	for (int i = 0; i < 3; ++ i ) {
 		if (request[i] > available[i]) {
 			cout << "resource request not available: resources not enough now, must wait." << endl;
 			return ;
 		}
 	}
-	
-	
+
+
 	// try to allocate
 	for (int i = 0; i < 3; ++ i ) {
 		available[i] -= request[i];
 		allocation[process_no][i] += request[i];
 		need[process_no][i] -= request[i];
 	}
-	
+
 	// ture if succeed.
 	if (ifSave()) {
 		cout << "it's save to allocate." << endl;
@@ -119,10 +118,10 @@ void bankerAlgorithm(int process_no, int request[3]) {
 			cout << save_list[i] << " ";
 		}
 		cout << endl;
-	
+
 		return;
 	}
-	
+
 	// not succeed, retrieve.
 	for (int i = 0; i < 3; ++ i ) {
 		available[i] += request[i];
@@ -135,8 +134,8 @@ void bankerAlgorithm(int process_no, int request[3]) {
 
 
 int main() {
-	int p1[] = {1, 0, 2};
-	bankerAlgorithm(1, p1);
-	
+	int p2[] = {0, 1, 0};
+	bankerAlgorithm(2, p2);
+
 	return 0;
 }
